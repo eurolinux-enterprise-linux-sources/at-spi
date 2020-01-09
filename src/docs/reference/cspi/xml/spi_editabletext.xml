@@ -1,0 +1,273 @@
+<refentry id="at-spi-cspi-AccessibleEditableText-Interface">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-AccessibleEditableText-Interface.top_of_page">AccessibleEditableText Interface</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>AccessibleEditableText Interface</refname>
+<refpurpose>An interface which allows editable text fields to be programmatically manipulated.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-AccessibleEditableText-Interface.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+<link linkend="void">void</link>                <link linkend="AccessibleEditableText-ref">AccessibleEditableText_ref</link>          (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleEditableText-unref">AccessibleEditableText_unref</link>        (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleEditableText-copyText">AccessibleEditableText_copyText</link>     (<link linkend="AccessibleText">AccessibleText</link> *obj,
+                                                         long <link linkend="int">int</link> startPos,
+                                                         long <link linkend="int">int</link> endPos);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleEditableText-deleteText">AccessibleEditableText_deleteText</link>   (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         long <link linkend="int">int</link> startPos,
+                                                         long <link linkend="int">int</link> endPos);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleEditableText-insertText">AccessibleEditableText_insertText</link>   (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         long <link linkend="int">int</link> position,
+                                                         const <link linkend="char">char</link> *text,
+                                                         long <link linkend="int">int</link> length);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleEditableText-cutText">AccessibleEditableText_cutText</link>      (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         long <link linkend="int">int</link> startPos,
+                                                         long <link linkend="int">int</link> endPos);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleEditableText-pasteText">AccessibleEditableText_pasteText</link>    (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         long <link linkend="int">int</link> position);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleEditableText-setTextContents">AccessibleEditableText_setTextContents</link>
+                                                        (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         const <link linkend="char">char</link> *newContents);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleEditableText-setAttributes">AccessibleEditableText_setAttributes</link>
+                                                        (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         const <link linkend="char">char</link> *attributes,
+                                                         long <link linkend="int">int</link> startOffset,
+                                                         long <link linkend="int">int</link> endOffset);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-AccessibleEditableText-Interface.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+An interface implemented by objects whose text content may be (potentially or
+actually) directly modified by user activity.  Text entry fields and text
+editor compose panes are examples of EditableText implementors.
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-AccessibleEditableText-Interface.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="AccessibleEditableText-ref" role="function">
+<title>AccessibleEditableText_ref ()</title>
+<indexterm zone="AccessibleEditableText-ref"><primary sortas="AccessibleEditableText_ref">AccessibleEditableText_ref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleEditableText_ref          (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj);</programlisting>
+<para>
+Increment the reference count for an <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object.
+      Since AccessibleEditableText is derived from AccessibleText,
+      this is the same as <link linkend="AccessibleText-ref"><function>AccessibleText_ref()</function></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleEditableText-unref" role="function">
+<title>AccessibleEditableText_unref ()</title>
+<indexterm zone="AccessibleEditableText-unref"><primary sortas="AccessibleEditableText_unref">AccessibleEditableText_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleEditableText_unref        (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj);</programlisting>
+<para>
+Decrement the reference count for an <link linkend="AccessibleEdiitableText"><type>AccessibleEdiitableText</type></link> object.
+      Since AccessibleEditableText is derived from AccessibleText,
+      this is the same as <link linkend="AccessibleText-unref"><function>AccessibleText_unref()</function></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleEditableText-copyText" role="function">
+<title>AccessibleEditableText_copyText ()</title>
+<indexterm zone="AccessibleEditableText-copyText"><primary sortas="AccessibleEditableText_copyText">AccessibleEditableText_copyText</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleEditableText_copyText     (<link linkend="AccessibleText">AccessibleText</link> *obj,
+                                                         long <link linkend="int">int</link> startPos,
+                                                         long <link linkend="int">int</link> endPos);</programlisting>
+<para>
+Copy text from an <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object into the clipboard.
+</para>
+<para>
+<parameter>see</parameter>: AccessibleEditableText_pasteText</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>startPos</parameter>&#160;:</term>
+<listitem><simpara> an integer indicating the starting character offset
+      of the text to copy.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>endPos</parameter>&#160;:</term>
+<listitem><simpara> an integer indicating the offset of the first character
+      past the end of the text section to be copied.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the operation was successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleEditableText-deleteText" role="function">
+<title>AccessibleEditableText_deleteText ()</title>
+<indexterm zone="AccessibleEditableText-deleteText"><primary sortas="AccessibleEditableText_deleteText">AccessibleEditableText_deleteText</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleEditableText_deleteText   (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         long <link linkend="int">int</link> startPos,
+                                                         long <link linkend="int">int</link> endPos);</programlisting>
+<para>
+Delete text from an <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object, without copying the
+      excised portion into the clipboard.
+</para>
+<para>
+<parameter>see</parameter>: AccessibleEditableText_cutText</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>startPos</parameter>&#160;:</term>
+<listitem><simpara> an integer indicating the starting character offset
+      of the text to delete.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>endPos</parameter>&#160;:</term>
+<listitem><simpara> an integer indicating the offset of the first character
+      past the end of the text section to be deleted.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the operation was successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleEditableText-insertText" role="function">
+<title>AccessibleEditableText_insertText ()</title>
+<indexterm zone="AccessibleEditableText-insertText"><primary sortas="AccessibleEditableText_insertText">AccessibleEditableText_insertText</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleEditableText_insertText   (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         long <link linkend="int">int</link> position,
+                                                         const <link linkend="char">char</link> *text,
+                                                         long <link linkend="int">int</link> length);</programlisting>
+<para>
+Insert text into an <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object.
+As with all character offsets, the specified <parameter>position</parameter> may not be the
+      same as the resulting byte offset, since the text is in a
+      variable-width encoding.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>position</parameter>&#160;:</term>
+<listitem><simpara> an integer indicating the character offset at which to insert
+      the new text.  
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>text</parameter>&#160;:</term>
+<listitem><simpara> a char* pointer to the text to insert, in UTF-8 encoding.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>length</parameter>&#160;:</term>
+<listitem><simpara> (frankly I'm not sure this parameter should be here)
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the operation was successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleEditableText-cutText" role="function">
+<title>AccessibleEditableText_cutText ()</title>
+<indexterm zone="AccessibleEditableText-cutText"><primary sortas="AccessibleEditableText_cutText">AccessibleEditableText_cutText</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleEditableText_cutText      (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         long <link linkend="int">int</link> startPos,
+                                                         long <link linkend="int">int</link> endPos);</programlisting>
+<para>
+Delete text from an <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object, copying the
+      excised portion into the clipboard.
+</para>
+<para>
+<parameter>see</parameter>: AccessibleEditableText_pasteText</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>startPos</parameter>&#160;:</term>
+<listitem><simpara> an integer indicating the starting character offset
+      of the text to cut.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>endPos</parameter>&#160;:</term>
+<listitem><simpara> an integer indicating the offset of the first character
+      past the end of the text section to be cut.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if operation was successful, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleEditableText-pasteText" role="function">
+<title>AccessibleEditableText_pasteText ()</title>
+<indexterm zone="AccessibleEditableText-pasteText"><primary sortas="AccessibleEditableText_pasteText">AccessibleEditableText_pasteText</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleEditableText_pasteText    (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         long <link linkend="int">int</link> position);</programlisting>
+<para>
+Insert text from the clipboard into an <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object.
+As with all character offsets, the specified <parameter>position</parameter> may not be the
+      same as the resulting byte offset, since the text is in a
+      variable-width encoding.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>position</parameter>&#160;:</term>
+<listitem><simpara> an integer indicating the character offset at which to insert
+      the new text.  
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the operation was successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleEditableText-setTextContents" role="function">
+<title>AccessibleEditableText_setTextContents ()</title>
+<indexterm zone="AccessibleEditableText-setTextContents"><primary sortas="AccessibleEditableText_setTextContents">AccessibleEditableText_setTextContents</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleEditableText_setTextContents
+                                                        (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         const <link linkend="char">char</link> *newContents);</programlisting>
+<para>
+Replace the entire text contents of an <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>newContents</parameter>&#160;:</term>
+<listitem><simpara> a character string, encoded in UTF-8, which is to
+     become the new text contents of the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the operation was successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleEditableText-setAttributes" role="function">
+<title>AccessibleEditableText_setAttributes ()</title>
+<indexterm zone="AccessibleEditableText-setAttributes"><primary sortas="AccessibleEditableText_setAttributes">AccessibleEditableText_setAttributes</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleEditableText_setAttributes
+                                                        (<link linkend="AccessibleEditableText">AccessibleEditableText</link> *obj,
+                                                         const <link linkend="char">char</link> *attributes,
+                                                         long <link linkend="int">int</link> startOffset,
+                                                         long <link linkend="int">int</link> endOffset);</programlisting>
+<para>
+Set the attributes applied to a range of text from an <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link>
+         object, and the bounds of the range.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> object to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>attributes</parameter>&#160;:</term>
+<listitem><simpara> a character string indicating the attributes to apply to the range,
+       delimited by ':'.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>startOffset</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="long"><type>long</type></link> indicating the start of the desired text range.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>endOffset</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="long"><type>long</type></link> indicating the first character past the desired range.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the operation was successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

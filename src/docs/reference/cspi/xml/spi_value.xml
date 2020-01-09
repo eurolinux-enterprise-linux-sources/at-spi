@@ -1,0 +1,153 @@
+<refentry id="at-spi-cspi-AccessibleValue-Interface">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-AccessibleValue-Interface.top_of_page">AccessibleValue Interface</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>AccessibleValue Interface</refname>
+<refpurpose>An interface implemented by valuators, sliders, and other onscren components
+which allow discrete or continuous values to be manipulated.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-AccessibleValue-Interface.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+<link linkend="void">void</link>                <link linkend="AccessibleValue-ref">AccessibleValue_ref</link>                 (<link linkend="AccessibleValue">AccessibleValue</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleValue-unref">AccessibleValue_unref</link>               (<link linkend="AccessibleValue">AccessibleValue</link> *obj);
+<link linkend="double">double</link>              <link linkend="AccessibleValue-getCurrentValue">AccessibleValue_getCurrentValue</link>     (<link linkend="AccessibleValue">AccessibleValue</link> *obj);
+<link linkend="double">double</link>              <link linkend="AccessibleValue-getMaximumValue">AccessibleValue_getMaximumValue</link>     (<link linkend="AccessibleValue">AccessibleValue</link> *obj);
+<link linkend="double">double</link>              <link linkend="AccessibleValue-getMinimumValue">AccessibleValue_getMinimumValue</link>     (<link linkend="AccessibleValue">AccessibleValue</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleValue-setCurrentValue">AccessibleValue_setCurrentValue</link>     (<link linkend="AccessibleValue">AccessibleValue</link> *obj,
+                                                         <link linkend="double">double</link> newValue);
+<link linkend="double">double</link>              <link linkend="AccessibleValue-getMinimumIncrement">AccessibleValue_getMinimumIncrement</link> (<link linkend="AccessibleValue">AccessibleValue</link> *obj);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-AccessibleValue-Interface.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+The Value interface is exposed by sliders, scrollbars, dials, and other
+components which are used to change scalar values in an application.  The
+interface may be used to change a value in an "approximately continuous"
+fashion, or in integer increments - the interface allows the client to
+determine the incremental granularity of the adjustments possible, the
+possible range of values, and the current value.  It also allows the value to
+be programmatically set, if the implementor's state does not include READONLY.
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-AccessibleValue-Interface.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="AccessibleValue-ref" role="function">
+<title>AccessibleValue_ref ()</title>
+<indexterm zone="AccessibleValue-ref"><primary sortas="AccessibleValue_ref">AccessibleValue_ref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleValue_ref                 (<link linkend="AccessibleValue">AccessibleValue</link> *obj);</programlisting>
+<para>
+Increment the reference count for an <link linkend="AccessibleValue"><type>AccessibleValue</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleValue"><type>AccessibleValue</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleValue-unref" role="function">
+<title>AccessibleValue_unref ()</title>
+<indexterm zone="AccessibleValue-unref"><primary sortas="AccessibleValue_unref">AccessibleValue_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleValue_unref               (<link linkend="AccessibleValue">AccessibleValue</link> *obj);</programlisting>
+<para>
+Decrement the reference count for an <link linkend="AccessibleValue"><type>AccessibleValue</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleValue"><type>AccessibleValue</type></link> implementor on which to operate. 
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleValue-getCurrentValue" role="function">
+<title>AccessibleValue_getCurrentValue ()</title>
+<indexterm zone="AccessibleValue-getCurrentValue"><primary sortas="AccessibleValue_getCurrentValue">AccessibleValue_getCurrentValue</primary></indexterm><programlisting><link linkend="double">double</link>              AccessibleValue_getCurrentValue     (<link linkend="AccessibleValue">AccessibleValue</link> *obj);</programlisting>
+<para>
+Get the current value for an <link linkend="AccessibleValue"><type>AccessibleValue</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleValue"><type>AccessibleValue</type></link> implementor on which to operate. 
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> the current value for this object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleValue-getMaximumValue" role="function">
+<title>AccessibleValue_getMaximumValue ()</title>
+<indexterm zone="AccessibleValue-getMaximumValue"><primary sortas="AccessibleValue_getMaximumValue">AccessibleValue_getMaximumValue</primary></indexterm><programlisting><link linkend="double">double</link>              AccessibleValue_getMaximumValue     (<link linkend="AccessibleValue">AccessibleValue</link> *obj);</programlisting>
+<para>
+Get the maximum allowed value for an <link linkend="AccessibleValue"><type>AccessibleValue</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleValue"><type>AccessibleValue</type></link> implementor on which to operate. 
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> the maximum allowed value for this object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleValue-getMinimumValue" role="function">
+<title>AccessibleValue_getMinimumValue ()</title>
+<indexterm zone="AccessibleValue-getMinimumValue"><primary sortas="AccessibleValue_getMinimumValue">AccessibleValue_getMinimumValue</primary></indexterm><programlisting><link linkend="double">double</link>              AccessibleValue_getMinimumValue     (<link linkend="AccessibleValue">AccessibleValue</link> *obj);</programlisting>
+<para>
+Get the minimum allowed value for an <link linkend="AccessibleValue"><type>AccessibleValue</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleValue"><type>AccessibleValue</type></link> implementor on which to operate. 
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> the minimum allowed value for this object.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleValue-setCurrentValue" role="function">
+<title>AccessibleValue_setCurrentValue ()</title>
+<indexterm zone="AccessibleValue-setCurrentValue"><primary sortas="AccessibleValue_setCurrentValue">AccessibleValue_setCurrentValue</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleValue_setCurrentValue     (<link linkend="AccessibleValue">AccessibleValue</link> *obj,
+                                                         <link linkend="double">double</link> newValue);</programlisting>
+<para>
+Set the current value of an <link linkend="AccessibleValue"><type>AccessibleValue</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleValue"><type>AccessibleValue</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>newValue</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="float"><type>float</type></link> value which is the desired new value of the object.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the value could be assigned the specified value,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleValue-getMinimumIncrement" role="function">
+<title>AccessibleValue_getMinimumIncrement ()</title>
+<indexterm zone="AccessibleValue-getMinimumIncrement"><primary sortas="AccessibleValue_getMinimumIncrement">AccessibleValue_getMinimumIncrement</primary></indexterm><programlisting><link linkend="double">double</link>              AccessibleValue_getMinimumIncrement (<link linkend="AccessibleValue">AccessibleValue</link> *obj);</programlisting>
+<para>
+Get the minimum increment by which an <link linkend="AccessibleValue"><type>AccessibleValue</type></link> can be adjusted.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleValue"><type>AccessibleValue</type></link> implementor on which to operate. 
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> the minimum increment by which the value may be changed, or
+zero if the minimum increment cannot be determined.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

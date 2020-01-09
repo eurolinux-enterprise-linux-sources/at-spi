@@ -1,0 +1,245 @@
+<refentry id="at-spi-cspi-AccessibleSelection-Interface">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-AccessibleSelection-Interface.top_of_page">AccessibleSelection Interface</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>AccessibleSelection Interface</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-AccessibleSelection-Interface.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+<link linkend="void">void</link>                <link linkend="AccessibleSelection-ref">AccessibleSelection_ref</link>             (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleSelection-unref">AccessibleSelection_unref</link>           (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj);
+<link linkend="long">long</link>                <link linkend="AccessibleSelection-getNSelectedChildren">AccessibleSelection_getNSelectedChildren</link>
+                                                        (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj);
+<link linkend="Accessible">Accessible</link> *        <link linkend="AccessibleSelection-getSelectedChild">AccessibleSelection_getSelectedChild</link>
+                                                        (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj,
+                                                         long <link linkend="int">int</link> selectedChildIndex);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleSelection-selectChild">AccessibleSelection_selectChild</link>     (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj,
+                                                         long <link linkend="int">int</link> childIndex);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleSelection-isChildSelected">AccessibleSelection_isChildSelected</link> (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj,
+                                                         long <link linkend="int">int</link> childIndex);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleSelection-deselectSelectedChild">AccessibleSelection_deselectSelectedChild</link>
+                                                        (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj,
+                                                         long <link linkend="int">int</link> selectedChildIndex);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleSelection-deselectChild">AccessibleSelection_deselectChild</link>   (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj,
+                                                         long <link linkend="int">int</link> childIndex);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleSelection-clearSelection">AccessibleSelection_clearSelection</link>  (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleSelection-selectAll">AccessibleSelection_selectAll</link>       (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-AccessibleSelection-Interface.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-AccessibleSelection-Interface.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="AccessibleSelection-ref" role="function">
+<title>AccessibleSelection_ref ()</title>
+<indexterm zone="AccessibleSelection-ref"><primary sortas="AccessibleSelection_ref">AccessibleSelection_ref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleSelection_ref             (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj);</programlisting>
+<para>
+Increment the reference count for an <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleSelection-unref" role="function">
+<title>AccessibleSelection_unref ()</title>
+<indexterm zone="AccessibleSelection-unref"><primary sortas="AccessibleSelection_unref">AccessibleSelection_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleSelection_unref           (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj);</programlisting>
+<para>
+Decrement the reference count for an <link linkend="Accessible"><type>Accessible</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor on which to operate. 
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleSelection-getNSelectedChildren" role="function">
+<title>AccessibleSelection_getNSelectedChildren ()</title>
+<indexterm zone="AccessibleSelection-getNSelectedChildren"><primary sortas="AccessibleSelection_getNSelectedChildren">AccessibleSelection_getNSelectedChildren</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleSelection_getNSelectedChildren
+                                                        (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj);</programlisting>
+<para>
+Get the number of children of an <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor which are
+       currently selected.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="long"><type>long</type></link> indicating the number of <link linkend="Accessible"><type>Accessible</type></link> children
+       of the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor which are currently selected.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleSelection-getSelectedChild" role="function">
+<title>AccessibleSelection_getSelectedChild ()</title>
+<indexterm zone="AccessibleSelection-getSelectedChild"><primary sortas="AccessibleSelection_getSelectedChild">AccessibleSelection_getSelectedChild</primary></indexterm><programlisting><link linkend="Accessible">Accessible</link> *        AccessibleSelection_getSelectedChild
+                                                        (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj,
+                                                         long <link linkend="int">int</link> selectedChildIndex);</programlisting>
+<para>
+Get the i-th selected <link linkend="Accessible"><type>Accessible</type></link> child of an <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link>.
+     Note that <parameter>childIndex</parameter> refers to the index in the list of 'selected'
+     children and generally differs from that used in
+     #<link linkend="Accessible-getChildAtIndex"><function>Accessible_getChildAtIndex()</function></link> or returned by
+     #<link linkend="Accessible-getIndexInParent"><function>Accessible_getIndexInParent()</function></link>. <parameter>selectedChildIndex</parameter> must lie between 0
+     and #<link linkend="AccessibleSelection-getNSelectedChildren"><function>AccessibleSelection_getNSelectedChildren()</function></link>-1, inclusive.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>selectedChildIndex</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="long"><type>long</type></link> indicating which of the selected
+     children is specified.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to a selected <link linkend="Accessible"><type>Accessible</type></link> child object,
+         specified by <parameter>childIndex</parameter>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleSelection-selectChild" role="function">
+<title>AccessibleSelection_selectChild ()</title>
+<indexterm zone="AccessibleSelection-selectChild"><primary sortas="AccessibleSelection_selectChild">AccessibleSelection_selectChild</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleSelection_selectChild     (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj,
+                                                         long <link linkend="int">int</link> childIndex);</programlisting>
+<para>
+Add a child to the selected children list of an <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link>.
+        For <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementors that only allow
+        single selections, this may replace the (single) current
+        selection.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>childIndex</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="long"><type>long</type></link> indicating which child of the <link linkend="Accessible"><type>Accessible</type></link>
+             is to be selected.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the child was successfully selected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleSelection-isChildSelected" role="function">
+<title>AccessibleSelection_isChildSelected ()</title>
+<indexterm zone="AccessibleSelection-isChildSelected"><primary sortas="AccessibleSelection_isChildSelected">AccessibleSelection_isChildSelected</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleSelection_isChildSelected (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj,
+                                                         long <link linkend="int">int</link> childIndex);</programlisting>
+<para>
+Determine whether a particular child of an <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor
+       is currently selected.  Note that <parameter>childIndex</parameter> is the index into the
+       standard <link linkend="Accessible"><type>Accessible</type></link> container's list of children.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>childIndex</parameter>&#160;:</term>
+<listitem><simpara> an index into the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link>'s list of children.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the specified child is currently selected,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleSelection-deselectSelectedChild" role="function">
+<title>AccessibleSelection_deselectSelectedChild ()</title>
+<indexterm zone="AccessibleSelection-deselectSelectedChild"><primary sortas="AccessibleSelection_deselectSelectedChild">AccessibleSelection_deselectSelectedChild</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleSelection_deselectSelectedChild
+                                                        (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj,
+                                                         long <link linkend="int">int</link> selectedChildIndex);</programlisting>
+<para>
+Remove a child to the selected children list of an <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link>.
+         Note that <parameter>childIndex</parameter> is the index in the selected-children list,
+         not the index in the parent container.  <parameter>selectedChildIndex</parameter> in this
+         method, and <parameter>childIndex</parameter> in <link linkend="AccessibleSelection-selectChild"><type>AccessibleSelection_selectChild</type></link>
+         are asymmettric.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>selectedChildIndex</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="long"><type>long</type></link> indicating which of the selected children
+             of the <link linkend="Accessible"><type>Accessible</type></link> is to be selected.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the child was successfully deselected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleSelection-deselectChild" role="function">
+<title>AccessibleSelection_deselectChild ()</title>
+<indexterm zone="AccessibleSelection-deselectChild"><primary sortas="AccessibleSelection_deselectChild">AccessibleSelection_deselectChild</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleSelection_deselectChild   (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj,
+                                                         long <link linkend="int">int</link> childIndex);</programlisting>
+<para>
+Deselect a specific child of an <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link>.
+         Note that <parameter>childIndex</parameter> is the index of the child
+         in the parent container.
+</para>
+<para>
+See <link linkend="AccessibleSelection-deselectSelectedChild"><type>AccessibleSelection_deselectSelectedChild</type></link>
+</para>
+<para>
+Since AT-SPI 1.8.0</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>childIndex</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="long"><type>long</type></link> indicating which of the children
+             of the <link linkend="Accessible"><type>Accessible</type></link> is to be de-selected.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the child was successfully deselected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleSelection-clearSelection" role="function">
+<title>AccessibleSelection_clearSelection ()</title>
+<indexterm zone="AccessibleSelection-clearSelection"><primary sortas="AccessibleSelection_clearSelection">AccessibleSelection_clearSelection</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleSelection_clearSelection  (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj);</programlisting>
+<para>
+Clear the current selection, removing all selected children from the
+      specified <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor's selection list.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleSelection-selectAll" role="function">
+<title>AccessibleSelection_selectAll ()</title>
+<indexterm zone="AccessibleSelection-selectAll"><primary sortas="AccessibleSelection_selectAll">AccessibleSelection_selectAll</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleSelection_selectAll       (<link linkend="AccessibleSelection">AccessibleSelection</link> *obj);</programlisting>
+<para>
+Attempt to select all of the children of an <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor.
+Not all <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementors support this operation.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

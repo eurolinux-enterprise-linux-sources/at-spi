@@ -1,0 +1,1317 @@
+<refentry id="at-spi-cspi-Accessible-Objects">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-Accessible-Objects.top_of_page">Accessible Objects</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>Accessible Objects</refname>
+<refpurpose>The base accessibility interface which all accessible objects implement.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-Accessible-Objects.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+struct              <link linkend="Accessible">Accessible</link>;
+<link linkend="void">void</link>                <link linkend="Accessible-ref">Accessible_ref</link>                      (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="void">void</link>                <link linkend="Accessible-unref">Accessible_unref</link>                    (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="char">char</link> *              <link linkend="Accessible-getName">Accessible_getName</link>                  (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="char">char</link> *              <link linkend="Accessible-getDescription">Accessible_getDescription</link>           (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="Accessible">Accessible</link> *        <link linkend="Accessible-getParent">Accessible_getParent</link>                (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="long">long</link>                <link linkend="Accessible-getChildCount">Accessible_getChildCount</link>            (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="Accessible">Accessible</link> *        <link linkend="Accessible-getChildAtIndex">Accessible_getChildAtIndex</link>          (<link linkend="Accessible">Accessible</link> *obj,
+                                                         long <link linkend="int">int</link> childIndex);
+<link linkend="long">long</link>                <link linkend="Accessible-getIndexInParent">Accessible_getIndexInParent</link>         (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleRelation">AccessibleRelation</link> ** <link linkend="Accessible-getRelationSet">Accessible_getRelationSet</link>         (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleRole">AccessibleRole</link>      <link linkend="Accessible-getRole">Accessible_getRole</link>                  (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="char">char</link> *              <link linkend="Accessible-getRoleName">Accessible_getRoleName</link>              (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleStateSet">AccessibleStateSet</link> * <link linkend="Accessible-getStateSet">Accessible_getStateSet</link>             (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleAttributeSet">AccessibleAttributeSet</link> * <link linkend="Accessible-getAttributes">Accessible_getAttributes</link>       (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleApplication">AccessibleApplication</link> * <link linkend="Accessible-getHostApplication">Accessible_getHostApplication</link>   (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="char">char</link> *              <link linkend="Accessible-getLocalizedRoleName">Accessible_getLocalizedRoleName</link>     (<link linkend="Accessible">Accessible</link> *obj);
+
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isAction">Accessible_isAction</link>                 (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isApplication">Accessible_isApplication</link>            (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isComponent">Accessible_isComponent</link>              (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isDocument">Accessible_isDocument</link>               (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isEditableText">Accessible_isEditableText</link>           (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isHypertext">Accessible_isHypertext</link>              (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isImage">Accessible_isImage</link>                  (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isSelection">Accessible_isSelection</link>              (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isStreamableContent">Accessible_isStreamableContent</link>      (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isTable">Accessible_isTable</link>                  (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isText">Accessible_isText</link>                   (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="Accessible-isValue">Accessible_isValue</link>                  (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleAction">AccessibleAction</link> *  <link linkend="Accessible-getAction">Accessible_getAction</link>                (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleApplication">AccessibleApplication</link> * <link linkend="Accessible-getApplication">Accessible_getApplication</link>       (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleComponent">AccessibleComponent</link> * <link linkend="Accessible-getComponent">Accessible_getComponent</link>           (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleDocument">AccessibleDocument</link> * <link linkend="Accessible-getDocument">Accessible_getDocument</link>             (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleEditableText">AccessibleEditableText</link> * <link linkend="Accessible-getEditableText">Accessible_getEditableText</link>     (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleHypertext">AccessibleHypertext</link> * <link linkend="Accessible-getHypertext">Accessible_getHypertext</link>           (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleImage">AccessibleImage</link> *   <link linkend="Accessible-getImage">Accessible_getImage</link>                 (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleSelection">AccessibleSelection</link> * <link linkend="Accessible-getSelection">Accessible_getSelection</link>           (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> * <link linkend="Accessible-getStreamableContent">Accessible_getStreamableContent</link>
+                                                        (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleTable">AccessibleTable</link> *   <link linkend="Accessible-getTable">Accessible_getTable</link>                 (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleText">AccessibleText</link> *    <link linkend="Accessible-getText">Accessible_getText</link>                  (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleValue">AccessibleValue</link> *   <link linkend="Accessible-getValue">Accessible_getValue</link>                 (<link linkend="Accessible">Accessible</link> *obj);
+<link linkend="AccessibleUnknown">AccessibleUnknown</link> * <link linkend="Accessible-queryInterface">Accessible_queryInterface</link>           (<link linkend="Accessible">Accessible</link> *obj,
+                                                         const <link linkend="char">char</link> *interface_name);
+
+enum                <link linkend="AccessibleRole">AccessibleRole</link>;
+<link linkend="char">char</link>*               <link linkend="AccessibleRole-getName">AccessibleRole_getName</link>              (<link linkend="AccessibleRole">AccessibleRole</link> role);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-Accessible-Objects.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+The Accessible interface provides for a hierarchical tree of accessible
+objects corresponding to user interface components and content in an
+accessible application.  Accessible objects provide name, descriptive
+information, state information, and information on the "role" of the object in
+the user interface.  The capabilities of these objects may be queried via
+interface queries, as they are implemented via interface aggregation.  These
+objects are located in a containment hierarchy with parent/child
+relationships, and may have other functional relationships to objects within
+the tree.
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-Accessible-Objects.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="Accessible" role="struct">
+<title>struct Accessible</title>
+<indexterm zone="Accessible"><primary sortas="Accessible">Accessible</primary></indexterm><programlisting>struct Accessible {
+	CORBA_Object objref;
+	/* And some other bits */
+	guint        on_loan : 1;
+	guint        ref_count : 30;
+};
+</programlisting>
+<para>
+An Accessible object is an opaque object used to refer to an accessible
+object corresponding to an user interface element.
+</para><variablelist role="struct">
+<varlistentry>
+<term><link linkend="CORBA-Object">CORBA_Object</link>&#160;<structfield>objref</structfield>;</term>
+<listitem><simpara>private data
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="guint">guint</link>&#160;<structfield>on_loan</structfield>&#160;:&#160;1;</term>
+<listitem><simpara>private data
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="guint">guint</link>&#160;<structfield>ref_count</structfield>&#160;:&#160;30;</term>
+<listitem><simpara>private data
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-ref" role="function">
+<title>Accessible_ref ()</title>
+<indexterm zone="Accessible-ref"><primary sortas="Accessible_ref">Accessible_ref</primary></indexterm><programlisting><link linkend="void">void</link>                Accessible_ref                      (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Increment the reference count for an <link linkend="Accessible"><type>Accessible</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-unref" role="function">
+<title>Accessible_unref ()</title>
+<indexterm zone="Accessible-unref"><primary sortas="Accessible_unref">Accessible_unref</primary></indexterm><programlisting><link linkend="void">void</link>                Accessible_unref                    (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Decrement the reference count for an <link linkend="Accessible"><type>Accessible</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getName" role="function">
+<title>Accessible_getName ()</title>
+<indexterm zone="Accessible-getName"><primary sortas="Accessible_getName">Accessible_getName</primary></indexterm><programlisting><link linkend="char">char</link> *              Accessible_getName                  (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the name of an <link linkend="Accessible"><type>Accessible</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a UTF-8 string indicating the name of the <link linkend="Accessible"><type>Accessible</type></link> object.
+or NULL on exception
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getDescription" role="function">
+<title>Accessible_getDescription ()</title>
+<indexterm zone="Accessible-getDescription"><primary sortas="Accessible_getDescription">Accessible_getDescription</primary></indexterm><programlisting><link linkend="char">char</link> *              Accessible_getDescription           (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the description of an <link linkend="Accessible"><type>Accessible</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a UTF-8 string describing the <link linkend="Accessible"><type>Accessible</type></link> object.
+or NULL on exception
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getParent" role="function">
+<title>Accessible_getParent ()</title>
+<indexterm zone="Accessible-getParent"><primary sortas="Accessible_getParent">Accessible_getParent</primary></indexterm><programlisting><link linkend="Accessible">Accessible</link> *        Accessible_getParent                (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get an <link linkend="Accessible"><type>Accessible</type></link> object's parent container.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer tothe <link linkend="Accessible"><type>Accessible</type></link> object which contains the given
+         <link linkend="Accessible"><type>Accessible</type></link> instance, or NULL if the <parameter>obj</parameter> has no parent container.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getChildCount" role="function">
+<title>Accessible_getChildCount ()</title>
+<indexterm zone="Accessible-getChildCount"><primary sortas="Accessible_getChildCount">Accessible_getChildCount</primary></indexterm><programlisting><link linkend="long">long</link>                Accessible_getChildCount            (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the number of children contained by an <link linkend="Accessible"><type>Accessible</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="long"><type>long</type></link> indicating the number of <link linkend="Accessible"><type>Accessible</type></link> children
+         contained by an <link linkend="Accessible"><type>Accessible</type></link> object. or -1 on exception
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getChildAtIndex" role="function">
+<title>Accessible_getChildAtIndex ()</title>
+<indexterm zone="Accessible-getChildAtIndex"><primary sortas="Accessible_getChildAtIndex">Accessible_getChildAtIndex</primary></indexterm><programlisting><link linkend="Accessible">Accessible</link> *        Accessible_getChildAtIndex          (<link linkend="Accessible">Accessible</link> *obj,
+                                                         long <link linkend="int">int</link> childIndex);</programlisting>
+<para>
+Get the <link linkend="Accessible"><type>Accessible</type></link> child of an <link linkend="Accessible"><type>Accessible</type></link> object at a given index.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>childIndex</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="long"><type>long</type></link> indicating which child is specified.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> child object at index
+         <parameter>childIndex</parameter>. or NULL on exception
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getIndexInParent" role="function">
+<title>Accessible_getIndexInParent ()</title>
+<indexterm zone="Accessible-getIndexInParent"><primary sortas="Accessible_getIndexInParent">Accessible_getIndexInParent</primary></indexterm><programlisting><link linkend="long">long</link>                Accessible_getIndexInParent         (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the index of an <link linkend="Accessible"><type>Accessible</type></link> object in its containing <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="long"><type>long</type></link> indicating the index of the <link linkend="Accessible"><type>Accessible</type></link> object
+         in its parent (i.e. containing) <link linkend="Accessible"><type>Accessible</type></link> instance,
+         or -1 if <parameter>obj</parameter> has no containing parent or on exception.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getRelationSet" role="function">
+<title>Accessible_getRelationSet ()</title>
+<indexterm zone="Accessible-getRelationSet"><primary sortas="Accessible_getRelationSet">Accessible_getRelationSet</primary></indexterm><programlisting><link linkend="AccessibleRelation">AccessibleRelation</link> ** Accessible_getRelationSet         (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the set of <link linkend="AccessibleRelation"><type>AccessibleRelation</type></link> objects which describe this <link linkend="Accessible"><type>Accessible</type></link> object's
+      relationships with other <link linkend="Accessible"><type>Accessible</type></link> objects.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> an array of <link linkend="AccessibleRelation"><type>AccessibleRelation</type></link> pointers. or NULL on exception
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getRole" role="function">
+<title>Accessible_getRole ()</title>
+<indexterm zone="Accessible-getRole"><primary sortas="Accessible_getRole">Accessible_getRole</primary></indexterm><programlisting><link linkend="AccessibleRole">AccessibleRole</link>      Accessible_getRole                  (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the UI role of an <link linkend="Accessible"><type>Accessible</type></link> object.
+A UTF-8 string describing this role can be obtained via <link linkend="Accessible-getRoleName"><function>Accessible_getRoleName()</function></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> the <link linkend="AccessibleRole"><type>AccessibleRole</type></link> of the object.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getRoleName" role="function">
+<title>Accessible_getRoleName ()</title>
+<indexterm zone="Accessible-getRoleName"><primary sortas="Accessible_getRoleName">Accessible_getRoleName</primary></indexterm><programlisting><link linkend="char">char</link> *              Accessible_getRoleName              (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get a UTF-8 string describing the role this object plays in the UI.
+This method will return useful values for roles that fall outside the
+enumeration used in <link linkend="Accessible-getRole"><function>Accessible_getRole()</function></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a UTF-8 string specifying the role of this <link linkend="Accessible"><type>Accessible</type></link> object.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getStateSet" role="function">
+<title>Accessible_getStateSet ()</title>
+<indexterm zone="Accessible-getStateSet"><primary sortas="Accessible_getStateSet">Accessible_getStateSet</primary></indexterm><programlisting><link linkend="AccessibleStateSet">AccessibleStateSet</link> * Accessible_getStateSet             (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Gets the current state of an object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> representing the object's current state.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getAttributes" role="function">
+<title>Accessible_getAttributes ()</title>
+<indexterm zone="Accessible-getAttributes"><primary sortas="Accessible_getAttributes">Accessible_getAttributes</primary></indexterm><programlisting><link linkend="AccessibleAttributeSet">AccessibleAttributeSet</link> * Accessible_getAttributes       (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AttributeSet"><type>AttributeSet</type></link> representing any assigned 
+name-value pair attributes or annotations for this object.
+For typographic, textual, or textually-semantic attributes, see
+AccessibleText_getAttributes instead.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="Accessible"><type>Accessible</type></link> being queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> The name-value-pair attributes assigned to this object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getHostApplication" role="function">
+<title>Accessible_getHostApplication ()</title>
+<indexterm zone="Accessible-getHostApplication"><primary sortas="Accessible_getHostApplication">Accessible_getHostApplication</primary></indexterm><programlisting><link linkend="AccessibleApplication">AccessibleApplication</link> * Accessible_getHostApplication   (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the containing <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> for an object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="Accessible"><type>Accessible</type></link> being queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> the containing AccessibleApplication instance for this object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getLocalizedRoleName" role="function">
+<title>Accessible_getLocalizedRoleName ()</title>
+<indexterm zone="Accessible-getLocalizedRoleName"><primary sortas="Accessible_getLocalizedRoleName">Accessible_getLocalizedRoleName</primary></indexterm><programlisting><link linkend="char">char</link> *              Accessible_getLocalizedRoleName     (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get a UTF-8 string describing the (localized) role this object plays in the UI.
+This method will return useful values for roles that fall outside the
+enumeration used in <link linkend="Accessible-getRole"><function>Accessible_getRole()</function></link>.
+</para>
+<para>
+<parameter>Since</parameter>: AT-SPI 1.4</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a UTF-8 string specifying the role of this <link linkend="Accessible"><type>Accessible</type></link> object.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isAction" role="function">
+<title>Accessible_isAction ()</title>
+<indexterm zone="Accessible-isAction"><primary sortas="Accessible_isAction">Accessible_isAction</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isAction                 (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleAction"><type>AccessibleAction</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleAction"><type>AccessibleAction</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isApplication" role="function">
+<title>Accessible_isApplication ()</title>
+<indexterm zone="Accessible-isApplication"><primary sortas="Accessible_isApplication">Accessible_isApplication</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isApplication            (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isComponent" role="function">
+<title>Accessible_isComponent ()</title>
+<indexterm zone="Accessible-isComponent"><primary sortas="Accessible_isComponent">Accessible_isComponent</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isComponent              (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleComponent"><type>AccessibleComponent</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleComponent"><type>AccessibleComponent</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isDocument" role="function">
+<title>Accessible_isDocument ()</title>
+<indexterm zone="Accessible-isDocument"><primary sortas="Accessible_isDocument">Accessible_isDocument</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isDocument               (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleDocument"><type>AccessibleDocument</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleDocument"><type>AccessibleDocument</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isEditableText" role="function">
+<title>Accessible_isEditableText ()</title>
+<indexterm zone="Accessible-isEditableText"><primary sortas="Accessible_isEditableText">Accessible_isEditableText</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isEditableText           (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isHypertext" role="function">
+<title>Accessible_isHypertext ()</title>
+<indexterm zone="Accessible-isHypertext"><primary sortas="Accessible_isHypertext">Accessible_isHypertext</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isHypertext              (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleHypertext"><type>AccessibleHypertext</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleHypertext"><type>AccessibleHypertext</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isImage" role="function">
+<title>Accessible_isImage ()</title>
+<indexterm zone="Accessible-isImage"><primary sortas="Accessible_isImage">Accessible_isImage</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isImage                  (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleImage"><type>AccessibleImage</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleImage"><type>AccessibleImage</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isSelection" role="function">
+<title>Accessible_isSelection ()</title>
+<indexterm zone="Accessible-isSelection"><primary sortas="Accessible_isSelection">Accessible_isSelection</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isSelection              (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isStreamableContent" role="function">
+<title>Accessible_isStreamableContent ()</title>
+<indexterm zone="Accessible-isStreamableContent"><primary sortas="Accessible_isStreamableContent">Accessible_isStreamableContent</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isStreamableContent      (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements
+         <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isTable" role="function">
+<title>Accessible_isTable ()</title>
+<indexterm zone="Accessible-isTable"><primary sortas="Accessible_isTable">Accessible_isTable</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isTable                  (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleTable"><type>AccessibleTable</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isText" role="function">
+<title>Accessible_isText ()</title>
+<indexterm zone="Accessible-isText"><primary sortas="Accessible_isText">Accessible_isText</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isText                   (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleText"><type>AccessibleText</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleText"><type>AccessibleText</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-isValue" role="function">
+<title>Accessible_isValue ()</title>
+<indexterm zone="Accessible-isValue"><primary sortas="Accessible_isValue">Accessible_isValue</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          Accessible_isValue                  (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Query whether the specified <link linkend="Accessible"><type>Accessible</type></link> implements <link linkend="AccessibleValue"><type>AccessibleValue</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>obj</parameter> implements the <link linkend="AccessibleValue"><type>AccessibleValue</type></link> interface,
+         <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getAction" role="function">
+<title>Accessible_getAction ()</title>
+<indexterm zone="Accessible-getAction"><primary sortas="Accessible_getAction">Accessible_getAction</primary></indexterm><programlisting><link linkend="AccessibleAction">AccessibleAction</link> *  Accessible_getAction                (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleAction"><type>AccessibleAction</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleAction"><type>AccessibleAction</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleAction"><type>AccessibleAction</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getApplication" role="function">
+<title>Accessible_getApplication ()</title>
+<indexterm zone="Accessible-getApplication"><primary sortas="Accessible_getApplication">Accessible_getApplication</primary></indexterm><programlisting><link linkend="AccessibleApplication">AccessibleApplication</link> * Accessible_getApplication       (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getComponent" role="function">
+<title>Accessible_getComponent ()</title>
+<indexterm zone="Accessible-getComponent"><primary sortas="Accessible_getComponent">Accessible_getComponent</primary></indexterm><programlisting><link linkend="AccessibleComponent">AccessibleComponent</link> * Accessible_getComponent           (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleComponent"><type>AccessibleComponent</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleComponent"><type>AccessibleComponent</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleComponent"><type>AccessibleComponent</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getDocument" role="function">
+<title>Accessible_getDocument ()</title>
+<indexterm zone="Accessible-getDocument"><primary sortas="Accessible_getDocument">Accessible_getDocument</primary></indexterm><programlisting><link linkend="AccessibleDocument">AccessibleDocument</link> * Accessible_getDocument             (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleDocument"><type>AccessibleDocument</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleDocument"><type>AccessibleDocument</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleDocument"><type>AccessibleDocument</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getEditableText" role="function">
+<title>Accessible_getEditableText ()</title>
+<indexterm zone="Accessible-getEditableText"><primary sortas="Accessible_getEditableText">Accessible_getEditableText</primary></indexterm><programlisting><link linkend="AccessibleEditableText">AccessibleEditableText</link> * Accessible_getEditableText     (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleEditableText"><type>AccessibleEditableText</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getHypertext" role="function">
+<title>Accessible_getHypertext ()</title>
+<indexterm zone="Accessible-getHypertext"><primary sortas="Accessible_getHypertext">Accessible_getHypertext</primary></indexterm><programlisting><link linkend="AccessibleHypertext">AccessibleHypertext</link> * Accessible_getHypertext           (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleHypertext"><type>AccessibleHypertext</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleHypertext"><type>AccessibleHypertext</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleHypertext"><type>AccessibleHypertext</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getImage" role="function">
+<title>Accessible_getImage ()</title>
+<indexterm zone="Accessible-getImage"><primary sortas="Accessible_getImage">Accessible_getImage</primary></indexterm><programlisting><link linkend="AccessibleImage">AccessibleImage</link> *   Accessible_getImage                 (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleImage"><type>AccessibleImage</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleImage"><type>AccessibleImage</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleImage"><type>AccessibleImage</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getSelection" role="function">
+<title>Accessible_getSelection ()</title>
+<indexterm zone="Accessible-getSelection"><primary sortas="Accessible_getSelection">Accessible_getSelection</primary></indexterm><programlisting><link linkend="AccessibleSelection">AccessibleSelection</link> * Accessible_getSelection           (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleSelection"><type>AccessibleSelection</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getStreamableContent" role="function">
+<title>Accessible_getStreamableContent ()</title>
+<indexterm zone="Accessible-getStreamableContent"><primary sortas="Accessible_getStreamableContent">Accessible_getStreamableContent</primary></indexterm><programlisting><link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> * Accessible_getStreamableContent
+                                                        (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getTable" role="function">
+<title>Accessible_getTable ()</title>
+<indexterm zone="Accessible-getTable"><primary sortas="Accessible_getTable">Accessible_getTable</primary></indexterm><programlisting><link linkend="AccessibleTable">AccessibleTable</link> *   Accessible_getTable                 (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleTable"><type>AccessibleTable</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleTable"><type>AccessibleTable</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getText" role="function">
+<title>Accessible_getText ()</title>
+<indexterm zone="Accessible-getText"><primary sortas="Accessible_getText">Accessible_getText</primary></indexterm><programlisting><link linkend="AccessibleText">AccessibleText</link> *    Accessible_getText                  (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleText"><type>AccessibleText</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleText"><type>AccessibleText</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleText"><type>AccessibleText</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-getValue" role="function">
+<title>Accessible_getValue ()</title>
+<indexterm zone="Accessible-getValue"><primary sortas="Accessible_getValue">Accessible_getValue</primary></indexterm><programlisting><link linkend="AccessibleValue">AccessibleValue</link> *   Accessible_getValue                 (<link linkend="Accessible">Accessible</link> *obj);</programlisting>
+<para>
+Get the <link linkend="AccessibleValue"><type>AccessibleValue</type></link> interface for an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to an <link linkend="AccessibleValue"><type>AccessibleValue</type></link> interface instance, or
+         NULL if <parameter>obj</parameter> does not implement <link linkend="AccessibleValue"><type>AccessibleValue</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="Accessible-queryInterface" role="function">
+<title>Accessible_queryInterface ()</title>
+<indexterm zone="Accessible-queryInterface"><primary sortas="Accessible_queryInterface">Accessible_queryInterface</primary></indexterm><programlisting><link linkend="AccessibleUnknown">AccessibleUnknown</link> * Accessible_queryInterface           (<link linkend="Accessible">Accessible</link> *obj,
+                                                         const <link linkend="char">char</link> *interface_name);</programlisting>
+<para>
+Query an <link linkend="Accessible"><type>Accessible</type></link> object to for a named interface.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> instance to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>interface_name</parameter>&#160;:</term>
+<listitem><simpara> a UTF-8 character string specifiying the requested interface.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> an instance of the named interface object, if it is implemented
+         by <parameter>obj</parameter>, or NULL otherwise.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleRole" role="enum">
+<title>enum AccessibleRole</title>
+<indexterm zone="AccessibleRole"><primary sortas="AccessibleRole">AccessibleRole</primary></indexterm><programlisting>typedef enum
+{
+  SPI_ROLE_INVALID,
+  SPI_ROLE_ACCEL_LABEL,
+  SPI_ROLE_ALERT,
+  SPI_ROLE_ANIMATION,
+  SPI_ROLE_ARROW,
+  SPI_ROLE_CALENDAR,
+  SPI_ROLE_CANVAS,
+  SPI_ROLE_CHECK_BOX,
+  SPI_ROLE_CHECK_MENU_ITEM,
+  SPI_ROLE_COLOR_CHOOSER,
+  SPI_ROLE_COLUMN_HEADER,
+  SPI_ROLE_COMBO_BOX,
+  SPI_ROLE_DATE_EDITOR,
+  SPI_ROLE_DESKTOP_ICON,
+  SPI_ROLE_DESKTOP_FRAME,
+  SPI_ROLE_DIAL,
+  SPI_ROLE_DIALOG,
+  SPI_ROLE_DIRECTORY_PANE,
+  SPI_ROLE_DRAWING_AREA,
+  SPI_ROLE_FILE_CHOOSER,
+  SPI_ROLE_FILLER,
+  SPI_ROLE_FONT_CHOOSER,
+  SPI_ROLE_FRAME,
+  SPI_ROLE_GLASS_PANE,
+  SPI_ROLE_HTML_CONTAINER,
+  SPI_ROLE_ICON,
+  SPI_ROLE_IMAGE,
+  SPI_ROLE_INTERNAL_FRAME,
+  SPI_ROLE_LABEL,
+  SPI_ROLE_LAYERED_PANE,
+  SPI_ROLE_LIST,
+  SPI_ROLE_LIST_ITEM,
+  SPI_ROLE_MENU,
+  SPI_ROLE_MENU_BAR,
+  SPI_ROLE_MENU_ITEM,
+  SPI_ROLE_OPTION_PANE,
+  SPI_ROLE_PAGE_TAB,
+  SPI_ROLE_PAGE_TAB_LIST,
+  SPI_ROLE_PANEL,
+  SPI_ROLE_PASSWORD_TEXT,
+  SPI_ROLE_POPUP_MENU,
+  SPI_ROLE_PROGRESS_BAR,
+  SPI_ROLE_PUSH_BUTTON,
+  SPI_ROLE_RADIO_BUTTON,
+  SPI_ROLE_RADIO_MENU_ITEM,
+  SPI_ROLE_ROOT_PANE,
+  SPI_ROLE_ROW_HEADER,
+  SPI_ROLE_SCROLL_BAR,
+  SPI_ROLE_SCROLL_PANE,
+  SPI_ROLE_SEPARATOR,
+  SPI_ROLE_SLIDER,
+  SPI_ROLE_SPIN_BUTTON,
+  SPI_ROLE_SPLIT_PANE,
+  SPI_ROLE_STATUS_BAR,
+  SPI_ROLE_TABLE,
+  SPI_ROLE_TABLE_CELL,
+  SPI_ROLE_TABLE_COLUMN_HEADER,
+  SPI_ROLE_TABLE_ROW_HEADER,
+  SPI_ROLE_TEAROFF_MENU_ITEM,
+  SPI_ROLE_TERMINAL,
+  SPI_ROLE_TEXT,
+  SPI_ROLE_TOGGLE_BUTTON,
+  SPI_ROLE_TOOL_BAR,
+  SPI_ROLE_TOOL_TIP,
+  SPI_ROLE_TREE,
+  SPI_ROLE_TREE_TABLE,
+  SPI_ROLE_UNKNOWN,
+  SPI_ROLE_VIEWPORT,
+  SPI_ROLE_WINDOW,
+  SPI_ROLE_EXTENDED,
+  SPI_ROLE_HEADER,
+  SPI_ROLE_FOOTER,
+  SPI_ROLE_PARAGRAPH,
+  SPI_ROLE_RULER,
+  SPI_ROLE_APPLICATION,
+  SPI_ROLE_AUTOCOMPLETE,
+  SPI_ROLE_EDITBAR,
+  SPI_ROLE_EMBEDDED,
+  SPI_ROLE_ENTRY,
+  SPI_ROLE_CHART,
+  SPI_ROLE_CAPTION,
+  SPI_ROLE_DOCUMENT_FRAME,
+  SPI_ROLE_HEADING,
+  SPI_ROLE_PAGE,
+  SPI_ROLE_SECTION,
+  SPI_ROLE_FORM,
+  SPI_ROLE_REDUNDANT_OBJECT,
+  SPI_ROLE_LINK,
+  SPI_ROLE_INPUT_METHOD_WINDOW,
+  SPI_ROLE_LAST_DEFINED
+} AccessibleRole;
+</programlisting>
+<para>
+Describes the role of an object
+</para>
+<para>
+These are the built-in enumerated roles that UI components can have.
+Other roles may be added at runtime, so an AccessibleRole &gt;=
+SPI_ROLE_LAST_DEFINED is not necessarily an error.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="SPI-ROLE-INVALID--CAPS" role="constant">
+<term><literal>SPI_ROLE_INVALID</literal></term>
+<listitem><simpara> role is not legal, something is wrong with this object
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-ACCEL-LABEL--CAPS" role="constant">
+<term><literal>SPI_ROLE_ACCEL_LABEL</literal></term>
+<listitem><simpara> object is a label indicating keyboard
+                             accelerators for the parent
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-ALERT--CAPS" role="constant">
+<term><literal>SPI_ROLE_ALERT</literal></term>
+<listitem><simpara> Object is used to alert the user about something
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-ANIMATION--CAPS" role="constant">
+<term><literal>SPI_ROLE_ANIMATION</literal></term>
+<listitem><simpara> Object contains a dynamic or moving image
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-ARROW--CAPS" role="constant">
+<term><literal>SPI_ROLE_ARROW</literal></term>
+<listitem><simpara> Object is a 2d directional indicator
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-CALENDAR--CAPS" role="constant">
+<term><literal>SPI_ROLE_CALENDAR</literal></term>
+<listitem><simpara> Object contains one or more dates, usually arranged into
+                    a 2d list
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-CANVAS--CAPS" role="constant">
+<term><literal>SPI_ROLE_CANVAS</literal></term>
+<listitem><simpara> Object that can be drawn into and is used to trap events
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-CHECK-BOX--CAPS" role="constant">
+<term><literal>SPI_ROLE_CHECK_BOX</literal></term>
+<listitem><simpara> Object representd a choice that can be checked or unchecked
+                   and provides a separate indicator for the current state.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-CHECK-MENU-ITEM--CAPS" role="constant">
+<term><literal>SPI_ROLE_CHECK_MENU_ITEM</literal></term>
+<listitem><simpara> Object is a menu item that behaves like a CHECK_BOX
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-COLOR-CHOOSER--CAPS" role="constant">
+<term><literal>SPI_ROLE_COLOR_CHOOSER</literal></term>
+<listitem><simpara> A specialized dialog that lets the user choose a color.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-COLUMN-HEADER--CAPS" role="constant">
+<term><literal>SPI_ROLE_COLUMN_HEADER</literal></term>
+<listitem><simpara> The header for a column of data 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-COMBO-BOX--CAPS" role="constant">
+<term><literal>SPI_ROLE_COMBO_BOX</literal></term>
+<listitem><simpara> A list of choices the user can select from
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-DATE-EDITOR--CAPS" role="constant">
+<term><literal>SPI_ROLE_DATE_EDITOR</literal></term>
+<listitem><simpara> Allows entry of a date
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-DESKTOP-ICON--CAPS" role="constant">
+<term><literal>SPI_ROLE_DESKTOP_ICON</literal></term>
+<listitem><simpara> An inconifed internal frame within a DESKTOP_PANE
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-DESKTOP-FRAME--CAPS" role="constant">
+<term><literal>SPI_ROLE_DESKTOP_FRAME</literal></term>
+<listitem><simpara> A pane that supports internal frames and
+             iconified versions of those internal frames.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-DIAL--CAPS" role="constant">
+<term><literal>SPI_ROLE_DIAL</literal></term>
+<listitem><simpara> A rotating/rotatable valuator
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-DIALOG--CAPS" role="constant">
+<term><literal>SPI_ROLE_DIALOG</literal></term>
+<listitem><simpara> A top level window with title bar and a border
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-DIRECTORY-PANE--CAPS" role="constant">
+<term><literal>SPI_ROLE_DIRECTORY_PANE</literal></term>
+<listitem><simpara> A pane that allows the user to navigate
+             through and select the contents of a directory.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-DRAWING-AREA--CAPS" role="constant">
+<term><literal>SPI_ROLE_DRAWING_AREA</literal></term>
+<listitem><simpara> An object used for drawing custom user interface elements
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-FILE-CHOOSER--CAPS" role="constant">
+<term><literal>SPI_ROLE_FILE_CHOOSER</literal></term>
+<listitem><simpara> A specialized dialog that displays the files in the
+              directory and lets the user select a file, browse a different
+ 	 directory, or specify a filename.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-FILLER--CAPS" role="constant">
+<term><literal>SPI_ROLE_FILLER</literal></term>
+<listitem><simpara> A object that fills up space in a user interface
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-FONT-CHOOSER--CAPS" role="constant">
+<term><literal>SPI_ROLE_FONT_CHOOSER</literal></term>
+<listitem><simpara> Allows selection of a display font
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-FRAME--CAPS" role="constant">
+<term><literal>SPI_ROLE_FRAME</literal></term>
+<listitem><simpara> A top level window with a title bar, border, menubar, etc.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-GLASS-PANE--CAPS" role="constant">
+<term><literal>SPI_ROLE_GLASS_PANE</literal></term>
+<listitem><simpara> A pane that is guaranteed to be painted on top of all
+              panes beneath it
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-HTML-CONTAINER--CAPS" role="constant">
+<term><literal>SPI_ROLE_HTML_CONTAINER</literal></term>
+<listitem><simpara> A document container for HTML, whose children
+              represent the document content.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-ICON--CAPS" role="constant">
+<term><literal>SPI_ROLE_ICON</literal></term>
+<listitem><simpara> A small fixed size picture, typically used to decorate components.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-IMAGE--CAPS" role="constant">
+<term><literal>SPI_ROLE_IMAGE</literal></term>
+<listitem><simpara> An image, typically static
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-INTERNAL-FRAME--CAPS" role="constant">
+<term><literal>SPI_ROLE_INTERNAL_FRAME</literal></term>
+<listitem><simpara> A frame-like object that is clipped by a desktop pane.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-LABEL--CAPS" role="constant">
+<term><literal>SPI_ROLE_LABEL</literal></term>
+<listitem><simpara> An object used to present an icon or short string in an interface
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-LAYERED-PANE--CAPS" role="constant">
+<term><literal>SPI_ROLE_LAYERED_PANE</literal></term>
+<listitem><simpara> A specialized pane that allows its children to be drawn in layers
+                        providing a  form of stacking order.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-LIST--CAPS" role="constant">
+<term><literal>SPI_ROLE_LIST</literal></term>
+<listitem><simpara> An object that presents a list of objects to the user and allows the
+                        user to select one or more of them.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-LIST-ITEM--CAPS" role="constant">
+<term><literal>SPI_ROLE_LIST_ITEM</literal></term>
+<listitem><simpara> An object that represents an element of a list.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-MENU--CAPS" role="constant">
+<term><literal>SPI_ROLE_MENU</literal></term>
+<listitem><simpara> An object usually found inside a menu bar that contains a list of
+                actions the user can choose from.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-MENU-BAR--CAPS" role="constant">
+<term><literal>SPI_ROLE_MENU_BAR</literal></term>
+<listitem><simpara> An object usually drawn at the top of the primary dialog box of an
+                application that contains a list of menus the user can choose from.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-MENU-ITEM--CAPS" role="constant">
+<term><literal>SPI_ROLE_MENU_ITEM</literal></term>
+<listitem><simpara> An object usually contained in a menu that presents an
+           action the user can choose.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-OPTION-PANE--CAPS" role="constant">
+<term><literal>SPI_ROLE_OPTION_PANE</literal></term>
+<listitem><simpara> A specialized pane whose primary use is inside a DIALOG 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-PAGE-TAB--CAPS" role="constant">
+<term><literal>SPI_ROLE_PAGE_TAB</literal></term>
+<listitem><simpara> An object that is a child of a page tab list
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-PAGE-TAB-LIST--CAPS" role="constant">
+<term><literal>SPI_ROLE_PAGE_TAB_LIST</literal></term>
+<listitem><simpara> An object that presents a series of panels (or page tabs),
+  one at a time, through some mechanism provided by the object.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-PANEL--CAPS" role="constant">
+<term><literal>SPI_ROLE_PANEL</literal></term>
+<listitem><simpara> A generic container that is often used to group objects.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-PASSWORD-TEXT--CAPS" role="constant">
+<term><literal>SPI_ROLE_PASSWORD_TEXT</literal></term>
+<listitem><simpara> A text object uses for passwords, or other places where
+       the text content is not shown visibly to the user.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-POPUP-MENU--CAPS" role="constant">
+<term><literal>SPI_ROLE_POPUP_MENU</literal></term>
+<listitem><simpara> A temporary window that is usually used to offer the user a
+       list of choices, and then hides when the user selects one of those choices.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-PROGRESS-BAR--CAPS" role="constant">
+<term><literal>SPI_ROLE_PROGRESS_BAR</literal></term>
+<listitem><simpara> An object used to indicate how much of a task has been completed.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-PUSH-BUTTON--CAPS" role="constant">
+<term><literal>SPI_ROLE_PUSH_BUTTON</literal></term>
+<listitem><simpara> A specialized object which the user can interact with to tell
+       the application to do something.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-RADIO-BUTTON--CAPS" role="constant">
+<term><literal>SPI_ROLE_RADIO_BUTTON</literal></term>
+<listitem><simpara> A specialized check box that will cause other radio buttons in the
+       same group to become uncghecked when this one is checked.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-RADIO-MENU-ITEM--CAPS" role="constant">
+<term><literal>SPI_ROLE_RADIO_MENU_ITEM</literal></term>
+<listitem><simpara> A specialized menu item that behaves like a 
+       radio button.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-ROOT-PANE--CAPS" role="constant">
+<term><literal>SPI_ROLE_ROOT_PANE</literal></term>
+<listitem><simpara> A specialized pane that has a glass pane and a layered pane as its
+       children.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-ROW-HEADER--CAPS" role="constant">
+<term><literal>SPI_ROLE_ROW_HEADER</literal></term>
+<listitem><simpara> The header for a row of data
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-SCROLL-BAR--CAPS" role="constant">
+<term><literal>SPI_ROLE_SCROLL_BAR</literal></term>
+<listitem><simpara> An object usually used to allow a user to incrementally
+       view a large amount of data.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-SCROLL-PANE--CAPS" role="constant">
+<term><literal>SPI_ROLE_SCROLL_PANE</literal></term>
+<listitem><simpara> An object that allows a user to incrementally view a large amount
+        of information.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-SEPARATOR--CAPS" role="constant">
+<term><literal>SPI_ROLE_SEPARATOR</literal></term>
+<listitem><simpara> An object usually contained in a menu to provide a visible and
+       logical separation of the contents in a menu.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-SLIDER--CAPS" role="constant">
+<term><literal>SPI_ROLE_SLIDER</literal></term>
+<listitem><simpara> An object that allows the user to select from a bounded range.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-SPIN-BUTTON--CAPS" role="constant">
+<term><literal>SPI_ROLE_SPIN_BUTTON</literal></term>
+<listitem><simpara> An object which allows selection from a set of choices and
+                       displays the current choice.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-SPLIT-PANE--CAPS" role="constant">
+<term><literal>SPI_ROLE_SPLIT_PANE</literal></term>
+<listitem><simpara> A specialized panel that presents two other panels at the same time.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-STATUS-BAR--CAPS" role="constant">
+<term><literal>SPI_ROLE_STATUS_BAR</literal></term>
+<listitem><simpara> An object the display qualitative status information. c.f. PROGRESS_BAR
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TABLE--CAPS" role="constant">
+<term><literal>SPI_ROLE_TABLE</literal></term>
+<listitem><simpara> An object used to rpesent information in terms of rows and columns.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TABLE-CELL--CAPS" role="constant">
+<term><literal>SPI_ROLE_TABLE_CELL</literal></term>
+<listitem><simpara> An object which is a descendant of a table,
+       with a row/column location.  A cell may span multiple rows and columns.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TABLE-COLUMN-HEADER--CAPS" role="constant">
+<term><literal>SPI_ROLE_TABLE_COLUMN_HEADER</literal></term>
+<listitem><simpara> An object which serves to describe a column in a table.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TABLE-ROW-HEADER--CAPS" role="constant">
+<term><literal>SPI_ROLE_TABLE_ROW_HEADER</literal></term>
+<listitem><simpara> An object which serves to label or describe a row in a table.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TEAROFF-MENU-ITEM--CAPS" role="constant">
+<term><literal>SPI_ROLE_TEAROFF_MENU_ITEM</literal></term>
+<listitem><simpara> A menu item which allows the menu to be removed from
+                             a menubar and placed in its own window
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TERMINAL--CAPS" role="constant">
+<term><literal>SPI_ROLE_TERMINAL</literal></term>
+<listitem><simpara> An object that emulates a teletype or terminal
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TEXT--CAPS" role="constant">
+<term><literal>SPI_ROLE_TEXT</literal></term>
+<listitem><simpara> An object that presents text to the user
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TOGGLE-BUTTON--CAPS" role="constant">
+<term><literal>SPI_ROLE_TOGGLE_BUTTON</literal></term>
+<listitem><simpara> A specialized push button that can be checked or unchecked,
+  but does not provide a separate indicator for the current state.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TOOL-BAR--CAPS" role="constant">
+<term><literal>SPI_ROLE_TOOL_BAR</literal></term>
+<listitem><simpara> A bar or palette usually composed of push buttons or toggle buttons
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TOOL-TIP--CAPS" role="constant">
+<term><literal>SPI_ROLE_TOOL_TIP</literal></term>
+<listitem><simpara> An object that provides information about another object
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TREE--CAPS" role="constant">
+<term><literal>SPI_ROLE_TREE</literal></term>
+<listitem><simpara> An object used to represent hierarchical information to the user
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-TREE-TABLE--CAPS" role="constant">
+<term><literal>SPI_ROLE_TREE_TABLE</literal></term>
+<listitem><simpara> An object which represents both hierarchical and tabular information
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-UNKNOWN--CAPS" role="constant">
+<term><literal>SPI_ROLE_UNKNOWN</literal></term>
+<listitem><simpara> The object contains some SpiAccessible information, but its role is
+                   not known.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-VIEWPORT--CAPS" role="constant">
+<term><literal>SPI_ROLE_VIEWPORT</literal></term>
+<listitem><simpara> An object usually used in a scroll pane, which restricts the visual
+                   area into which its contents are presented.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-WINDOW--CAPS" role="constant">
+<term><literal>SPI_ROLE_WINDOW</literal></term>
+<listitem><simpara> A top level window with no title or border.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-EXTENDED--CAPS" role="constant">
+<term><literal>SPI_ROLE_EXTENDED</literal></term>
+<listitem><simpara> This object's role is not included in the standard role list and
+                    should be queried by name.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-HEADER--CAPS" role="constant">
+<term><literal>SPI_ROLE_HEADER</literal></term>
+<listitem><simpara> An object that serves as a document header.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-FOOTER--CAPS" role="constant">
+<term><literal>SPI_ROLE_FOOTER</literal></term>
+<listitem><simpara> An object that serves as a document footer.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-PARAGRAPH--CAPS" role="constant">
+<term><literal>SPI_ROLE_PARAGRAPH</literal></term>
+<listitem><simpara> An object which is contains a paragraph of text content.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-RULER--CAPS" role="constant">
+<term><literal>SPI_ROLE_RULER</literal></term>
+<listitem><simpara> An object which describes margins and tab stops, etc.  for text objects 
+                 which it controls (should have CONTROLLER_FOR relation to such). 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-APPLICATION--CAPS" role="constant">
+<term><literal>SPI_ROLE_APPLICATION</literal></term>
+<listitem><simpara> An object which corresponds to a desktop application,
+                 which may have children of <parameter>SPI_ROLE_FRAME</parameter> or other type.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-AUTOCOMPLETE--CAPS" role="constant">
+<term><literal>SPI_ROLE_AUTOCOMPLETE</literal></term>
+<listitem><simpara> The object is a dialog or list containing items for 
+                        insertion into an entry widget, for instance a list 
+                         of words for completion of a text entry.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-EDITBAR--CAPS" role="constant">
+<term><literal>SPI_ROLE_EDITBAR</literal></term>
+<listitem><simpara> The object is an editable text object in a toolbar
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-EMBEDDED--CAPS" role="constant">
+<term><literal>SPI_ROLE_EMBEDDED</literal></term>
+<listitem><simpara> The object is an embedded component container.  
+                    This role is a  "grouping" hint that the contained 
+                    objects share a context which is different from the 
+                    container in which this accessible is embedded.
+                    Uses: document embedding, "panel applets", etc.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-ENTRY--CAPS" role="constant">
+<term><literal>SPI_ROLE_ENTRY</literal></term>
+<listitem><simpara> The object is a component whose textual content may be entered or modified by the user, provided <parameter>SPI_STATE_EDITABLE</parameter> is present.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-CHART--CAPS" role="constant">
+<term><literal>SPI_ROLE_CHART</literal></term>
+<listitem><simpara> The object is a graphical depiction of quantitative data. It may contain multiple subelements whose attributes and/or description may be queried to obtain both the quantitative data and information about how the data is being presented. The LABELLED_BY relation is particularly important in interpreting objects of this type, as is the accessible-description property.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-CAPTION--CAPS" role="constant">
+<term><literal>SPI_ROLE_CAPTION</literal></term>
+<listitem><simpara> The object contains descriptive information, usually textual, about another user interface element such as a table, chart, or image.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-DOCUMENT-FRAME--CAPS" role="constant">
+<term><literal>SPI_ROLE_DOCUMENT_FRAME</literal></term>
+<listitem><simpara> The object is a visual frame or container which contains a view of document content. Document frames may occur within another Document instance, in which case the second document may be said to be embedded in the containing instance. HTML frames are often ROLE_DOCUMENT_FRAME. Either this object, or a singleton descendant, should implement the Document interface.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-HEADING--CAPS" role="constant">
+<term><literal>SPI_ROLE_HEADING</literal></term>
+<listitem><simpara> The object serves as a heading for content which follows it in a document. The 'heading level' of the heading, if availabe, may be obtained by querying the object's attributes.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-PAGE--CAPS" role="constant">
+<term><literal>SPI_ROLE_PAGE</literal></term>
+<listitem><simpara> The object is a containing instance which encapsulates a page of information. <parameter>SPI_ROLE_PAGE</parameter> is used in documents and content which support a paginated navigation model.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-SECTION--CAPS" role="constant">
+<term><literal>SPI_ROLE_SECTION</literal></term>
+<listitem><simpara> The object is a containing instance of document content which constitutes a particular 'logical' section of the document. The type of content within a section, and the nature of the section division itself, may be obtained by querying the object's attributes. Sections may be nested.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-FORM--CAPS" role="constant">
+<term><literal>SPI_ROLE_FORM</literal></term>
+<listitem><simpara> The object is a container for form controls, for instance as part of a 
+web form or user-input form within a document.  This role is primarily a tag/convenience for 
+clients when navigating complex documents, it is not expected that ordinary GUI containers will 
+always have ATK_ROLE_FORM.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-REDUNDANT-OBJECT--CAPS" role="constant">
+<term><literal>SPI_ROLE_REDUNDANT_OBJECT</literal></term>
+<listitem><simpara> The object is redundant with another object in the hierarchy, and is exposed for purely technical reasons.  Objects of this role should normally be ignored by clients. 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-LINK--CAPS" role="constant">
+<term><literal>SPI_ROLE_LINK</literal></term>
+<listitem><simpara> The object is a hypertext anchor.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-INPUT-METHOD-WINDOW--CAPS" role="constant">
+<term><literal>SPI_ROLE_INPUT_METHOD_WINDOW</literal></term>
+<listitem><simpara> The object is an input method window used
+to input or compose a text character (typically a "complex text" character).
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-ROLE-LAST-DEFINED--CAPS" role="constant">
+<term><literal>SPI_ROLE_LAST_DEFINED</literal></term>
+<listitem><simpara> Used to determine the end of the role enumeration.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleRole-getName" role="function">
+<title>AccessibleRole_getName ()</title>
+<indexterm zone="AccessibleRole-getName"><primary sortas="AccessibleRole_getName">AccessibleRole_getName</primary></indexterm><programlisting><link linkend="char">char</link>*               AccessibleRole_getName              (<link linkend="AccessibleRole">AccessibleRole</link> role);</programlisting>
+<para>
+Get a localizeable string that indicates the name of an <link linkend="AccessibleRole"><type>AccessibleRole</type></link>.
+&lt;em&gt;DEPRECATED.&lt;/em&gt;</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>role</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleRole"><type>AccessibleRole</type></link> object to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a localizable string name for an <link linkend="AccessibleRole"><type>AccessibleRole</type></link> enumerated type.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

@@ -1,0 +1,472 @@
+<refentry id="at-spi-cspi-State-and-StateSets">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-State-and-StateSets.top_of_page">State and StateSets</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>State and StateSets</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-State-and-StateSets.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+enum                <link linkend="AccessibleState">AccessibleState</link>;
+struct              <link linkend="AccessibleStateSet">AccessibleStateSet</link>;
+<link linkend="void">void</link>                <link linkend="AccessibleStateSet-ref">AccessibleStateSet_ref</link>              (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleStateSet-unref">AccessibleStateSet_unref</link>            (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleStateSet-add">AccessibleStateSet_add</link>              (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj,
+                                                         <link linkend="AccessibleState">AccessibleState</link> state);
+<link linkend="AccessibleStateSet">AccessibleStateSet</link> * <link linkend="AccessibleStateSet-compare">AccessibleStateSet_compare</link>         (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj,
+                                                         <link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj2);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleStateSet-contains">AccessibleStateSet_contains</link>         (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj,
+                                                         <link linkend="AccessibleState">AccessibleState</link> state);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleStateSet-equals">AccessibleStateSet_equals</link>           (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj,
+                                                         <link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj2);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleStateSet-isEmpty">AccessibleStateSet_isEmpty</link>          (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleStateSet-remove">AccessibleStateSet_remove</link>           (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj,
+                                                         <link linkend="AccessibleState">AccessibleState</link> state);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-State-and-StateSets.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-State-and-StateSets.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="AccessibleState" role="enum">
+<title>enum AccessibleState</title>
+<indexterm zone="AccessibleState"><primary sortas="AccessibleState">AccessibleState</primary></indexterm><programlisting>typedef enum
+{
+  SPI_STATE_INVALID,
+  SPI_STATE_ACTIVE,
+  SPI_STATE_ARMED,
+  SPI_STATE_BUSY,
+  SPI_STATE_CHECKED,
+  SPI_STATE_COLLAPSED,
+  SPI_STATE_DEFUNCT,
+  SPI_STATE_EDITABLE,
+  SPI_STATE_ENABLED,
+  SPI_STATE_EXPANDABLE,
+  SPI_STATE_EXPANDED,
+  SPI_STATE_FOCUSABLE,
+  SPI_STATE_FOCUSED,
+  SPI_STATE_HORIZONTAL,
+  SPI_STATE_ICONIFIED,
+  SPI_STATE_MODAL,
+  SPI_STATE_MULTI_LINE,
+  SPI_STATE_MULTISELECTABLE,
+  SPI_STATE_OPAQUE,
+  SPI_STATE_PRESSED,
+  SPI_STATE_RESIZABLE,
+  SPI_STATE_SELECTABLE,
+  SPI_STATE_SELECTED,
+  SPI_STATE_SENSITIVE,
+  SPI_STATE_SHOWING,
+  SPI_STATE_SINGLE_LINE,
+  SPI_STATE_STALE,
+  SPI_STATE_TRANSIENT,
+  SPI_STATE_VERTICAL,
+  SPI_STATE_VISIBLE,
+  SPI_STATE_MANAGES_DESCENDANTS, 
+  SPI_STATE_INDETERMINATE, 
+  SPI_STATE_TRUNCATED,
+  SPI_STATE_REQUIRED,
+  SPI_STATE_INVALID_ENTRY,
+  SPI_STATE_SUPPORTS_AUTOCOMPLETION,
+  SPI_STATE_SELECTABLE_TEXT,
+  SPI_STATE_IS_DEFAULT,
+  SPI_STATE_VISITED,
+  SPI_STATE_LAST_DEFINED
+} AccessibleState;
+</programlisting>
+<para>
+The possibles states of an object.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="SPI-STATE-INVALID--CAPS" role="constant">
+<term><literal>SPI_STATE_INVALID</literal></term>
+<listitem><simpara> Indicates an invalid state
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-ACTIVE--CAPS" role="constant">
+<term><literal>SPI_STATE_ACTIVE</literal></term>
+<listitem><simpara> Indicates a window is currently the active window 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-ARMED--CAPS" role="constant">
+<term><literal>SPI_STATE_ARMED</literal></term>
+<listitem><simpara> Indicates that the object is armed
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-BUSY--CAPS" role="constant">
+<term><literal>SPI_STATE_BUSY</literal></term>
+<listitem><simpara> Indicates the current object is busy 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-CHECKED--CAPS" role="constant">
+<term><literal>SPI_STATE_CHECKED</literal></term>
+<listitem><simpara> Indicates this object is currently checked 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-COLLAPSED--CAPS" role="constant">
+<term><literal>SPI_STATE_COLLAPSED</literal></term>
+<listitem><simpara> Indicates this object is collapsed 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-DEFUNCT--CAPS" role="constant">
+<term><literal>SPI_STATE_DEFUNCT</literal></term>
+<listitem><simpara> Indicates the user interface object corresponding to this object no longer exists 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-EDITABLE--CAPS" role="constant">
+<term><literal>SPI_STATE_EDITABLE</literal></term>
+<listitem><simpara> Indicates the user can change the contents of this object
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-ENABLED--CAPS" role="constant">
+<term><literal>SPI_STATE_ENABLED</literal></term>
+<listitem><simpara> Indicates that this object is enabled 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-EXPANDABLE--CAPS" role="constant">
+<term><literal>SPI_STATE_EXPANDABLE</literal></term>
+<listitem><simpara> Indicates this object allows progressive disclosure of its children 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-EXPANDED--CAPS" role="constant">
+<term><literal>SPI_STATE_EXPANDED</literal></term>
+<listitem><simpara> Indicates this object its expanded
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-FOCUSABLE--CAPS" role="constant">
+<term><literal>SPI_STATE_FOCUSABLE</literal></term>
+<listitem><simpara> Indicates this object can accept keyboard focus, which means all events resulting from typing on the keyboard will normally be passed to it when it has focus
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-FOCUSED--CAPS" role="constant">
+<term><literal>SPI_STATE_FOCUSED</literal></term>
+<listitem><simpara> Indicates this object currently has the keyboard focus 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-HORIZONTAL--CAPS" role="constant">
+<term><literal>SPI_STATE_HORIZONTAL</literal></term>
+<listitem><simpara> Indicates the orientation of thsi object is horizontal
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-ICONIFIED--CAPS" role="constant">
+<term><literal>SPI_STATE_ICONIFIED</literal></term>
+<listitem><simpara> Indicates this object is minimized and is represented only by an icon
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-MODAL--CAPS" role="constant">
+<term><literal>SPI_STATE_MODAL</literal></term>
+<listitem><simpara> Indicates something must be done with this object before the user can interact with an object in a different window
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-MULTI-LINE--CAPS" role="constant">
+<term><literal>SPI_STATE_MULTI_LINE</literal></term>
+<listitem><simpara> Indicates this (text) object can contain multiple lines of text
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-MULTISELECTABLE--CAPS" role="constant">
+<term><literal>SPI_STATE_MULTISELECTABLE</literal></term>
+<listitem><simpara> Indicates this object allows more than one of its children to be selected at the same time
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-OPAQUE--CAPS" role="constant">
+<term><literal>SPI_STATE_OPAQUE</literal></term>
+<listitem><simpara> Indicates this object paints every pixel within its rectangular region
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-PRESSED--CAPS" role="constant">
+<term><literal>SPI_STATE_PRESSED</literal></term>
+<listitem><simpara> Indicates this object is currently pressed
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-RESIZABLE--CAPS" role="constant">
+<term><literal>SPI_STATE_RESIZABLE</literal></term>
+<listitem><simpara> Indicates the size of this object is not fixed
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-SELECTABLE--CAPS" role="constant">
+<term><literal>SPI_STATE_SELECTABLE</literal></term>
+<listitem><simpara> Indicates this object is the child of an object that allows its children to be selected and that this child is one of those children that can be selected
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-SELECTED--CAPS" role="constant">
+<term><literal>SPI_STATE_SELECTED</literal></term>
+<listitem><simpara> Indicates this object is the child of an object that allows its children to be selected and that this child is one of those children that has been selected
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-SENSITIVE--CAPS" role="constant">
+<term><literal>SPI_STATE_SENSITIVE</literal></term>
+<listitem><simpara> Indicates this object is sensitive
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-SHOWING--CAPS" role="constant">
+<term><literal>SPI_STATE_SHOWING</literal></term>
+<listitem><simpara> Indicates this object, the object's parent, the object's parent's parent, and so on, are all visible
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-SINGLE-LINE--CAPS" role="constant">
+<term><literal>SPI_STATE_SINGLE_LINE</literal></term>
+<listitem><simpara> Indicates this (text) object can contain only a single line of text
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-STALE--CAPS" role="constant">
+<term><literal>SPI_STATE_STALE</literal></term>
+<listitem><simpara> Indicates that the index associated with this object has changed since the user accessed the object
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-TRANSIENT--CAPS" role="constant">
+<term><literal>SPI_STATE_TRANSIENT</literal></term>
+<listitem><simpara> Indicates this object is transient
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-VERTICAL--CAPS" role="constant">
+<term><literal>SPI_STATE_VERTICAL</literal></term>
+<listitem><simpara> Indicates the orientation of this object is vertical
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-VISIBLE--CAPS" role="constant">
+<term><literal>SPI_STATE_VISIBLE</literal></term>
+<listitem><simpara> Indicates this object is visible 
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-MANAGES-DESCENDANTS--CAPS" role="constant">
+<term><literal>SPI_STATE_MANAGES_DESCENDANTS</literal></term>
+<listitem><simpara> Indicates that "active-descendant-changed" 
+event is sent when children become 'active' (i.e. are selected or navigated 
+to onscreen).  Used to prevent need to enumerate all children in very large 
+containers, like tables.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-INDETERMINATE--CAPS" role="constant">
+<term><literal>SPI_STATE_INDETERMINATE</literal></term>
+<listitem><simpara> Indicates that a check box is in a state other than checked or not checked.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-TRUNCATED--CAPS" role="constant">
+<term><literal>SPI_STATE_TRUNCATED</literal></term>
+<listitem><simpara> Indicates that an object is truncated, e.g. a text value in a speradsheet cell.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-REQUIRED--CAPS" role="constant">
+<term><literal>SPI_STATE_REQUIRED</literal></term>
+<listitem><simpara> Indicates that explicit user interaction with an object is required by the user interface, e.g. a required field in a "web-form" interface.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-INVALID-ENTRY--CAPS" role="constant">
+<term><literal>SPI_STATE_INVALID_ENTRY</literal></term>
+<listitem><simpara> Indicates that the object has encountered an error condition due to failure of input validation. For instance, a form control may acquire this state in response to invalid or malformed user input.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-SUPPORTS-AUTOCOMPLETION--CAPS" role="constant">
+<term><literal>SPI_STATE_SUPPORTS_AUTOCOMPLETION</literal></term>
+<listitem><simpara> Indicates that the object may exhibit "typeahead" behavior in response to user keystrokes, e.g. one keystroke may result in the insertion of several characters into an entry, or result in the auto-selection of an item in a list.  This state supplants <parameter>SPI_ROLE_AUTOCOMPLETE</parameter>.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-SELECTABLE-TEXT--CAPS" role="constant">
+<term><literal>SPI_STATE_SELECTABLE_TEXT</literal></term>
+<listitem><simpara>Indicates that the object in question supports text selection. It should only be exposed on objects which implement the Text interface, in order to distinguish this state from <parameter>SPI_STATE_SELECTABLE</parameter>, which infers that the object in question is a selectable child of an object which implements Selection. While similar, text selection and subelement selection are distinct operations.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-IS-DEFAULT--CAPS" role="constant">
+<term><literal>SPI_STATE_IS_DEFAULT</literal></term>
+<listitem><simpara> Indicates that the object is the "default" active component, i.e. the object which is activated by an end-user press of the "Enter" or "Return" key.  Typically a "close" or "submit" button.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-VISITED--CAPS" role="constant">
+<term><literal>SPI_STATE_VISITED</literal></term>
+<listitem><simpara> Indicates that the object (typically a hyperlink) has already been 'activated', and/or its backing data has already been downloaded, rendered, or otherwise "visited".
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STATE-LAST-DEFINED--CAPS" role="constant">
+<term><literal>SPI_STATE_LAST_DEFINED</literal></term>
+<listitem><simpara> Not a valid state, used for finding end of enumeration
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStateSet" role="struct">
+<title>struct AccessibleStateSet</title>
+<indexterm zone="AccessibleStateSet"><primary sortas="AccessibleStateSet">AccessibleStateSet</primary></indexterm><programlisting>struct AccessibleStateSet {
+	guint   ref_count;
+	GArray *states;
+};
+</programlisting>
+<para>
+An opaque structure representing an accessible object's state,
+which can then be queried via AccessibleStateSet APIs.</para>
+<para>
+An AccessibleStateSet determines a component's state set. It is composed of
+a set of AccessibleState values.
+</para><variablelist role="struct">
+<varlistentry>
+<term><link linkend="guint">guint</link>&#160;<structfield>ref_count</structfield>;</term>
+<listitem><simpara> private
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="GArray">GArray</link>&#160;*<structfield>states</structfield>;</term>
+<listitem><simpara> private
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStateSet-ref" role="function">
+<title>AccessibleStateSet_ref ()</title>
+<indexterm zone="AccessibleStateSet-ref"><primary sortas="AccessibleStateSet_ref">AccessibleStateSet_ref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleStateSet_ref              (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj);</programlisting>
+<para>
+Increment the reference count for an <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStateSet-unref" role="function">
+<title>AccessibleStateSet_unref ()</title>
+<indexterm zone="AccessibleStateSet-unref"><primary sortas="AccessibleStateSet_unref">AccessibleStateSet_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleStateSet_unref            (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj);</programlisting>
+<para>
+Decrement the reference count for an <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStateSet-add" role="function">
+<title>AccessibleStateSet_add ()</title>
+<indexterm zone="AccessibleStateSet-add"><primary sortas="AccessibleStateSet_add">AccessibleStateSet_add</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleStateSet_add              (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj,
+                                                         <link linkend="AccessibleState">AccessibleState</link> state);</programlisting>
+<para>
+Add a particular <link linkend="AccessibleState"><type>AccessibleState</type></link> to an <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> (i.e. set the
+      given state to <link linkend="TRUE--CAPS"><type>TRUE</type></link> in the stateset.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>state</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleState"><type>AccessibleState</type></link> to be added to the specified <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStateSet-compare" role="function">
+<title>AccessibleStateSet_compare ()</title>
+<indexterm zone="AccessibleStateSet-compare"><primary sortas="AccessibleStateSet_compare">AccessibleStateSet_compare</primary></indexterm><programlisting><link linkend="AccessibleStateSet">AccessibleStateSet</link> * AccessibleStateSet_compare         (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj,
+                                                         <link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj2);</programlisting>
+<para>
+Determine the differences between two instances of <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link>.
+Not Yet Implemented.
+.
+<parameter>see</parameter> <link linkend="AccessibleStateSet-equals"><function>AccessibleStateSet_equals()</function></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the first <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>obj2</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the second <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> an <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object containing all states contained on one of
+         the two sets but not the other.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStateSet-contains" role="function">
+<title>AccessibleStateSet_contains ()</title>
+<indexterm zone="AccessibleStateSet-contains"><primary sortas="AccessibleStateSet_contains">AccessibleStateSet_contains</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleStateSet_contains         (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj,
+                                                         <link linkend="AccessibleState">AccessibleState</link> state);</programlisting>
+<para>
+Determine whether a given <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> includes a given state; that is,
+      whether <parameter>state</parameter> is true for the stateset in question.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>state</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleState"><type>AccessibleState</type></link> for which the specified <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link>
+      will be queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if <parameter>state</parameter> is true/included in the given <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link>,
+         otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStateSet-equals" role="function">
+<title>AccessibleStateSet_equals ()</title>
+<indexterm zone="AccessibleStateSet-equals"><primary sortas="AccessibleStateSet_equals">AccessibleStateSet_equals</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleStateSet_equals           (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj,
+                                                         <link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj2);</programlisting>
+<para>
+Determine whether two instances of <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> are equivalent (i.e.
+        consist of the same <link linkend="AccessibleStates"><type>AccessibleStates</type></link>).  Useful for checking multiple
+        state variables at once; construct the target state then compare against it.
+</para>
+<para>
+<parameter>see</parameter> <link linkend="AccessibleStateSet-compare"><function>AccessibleStateSet_compare()</function></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the first <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>obj2</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the second <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the two <link linkend="AccessibleStateSets"><type>AccessibleStateSets</type></link> are equivalent,
+         otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStateSet-isEmpty" role="function">
+<title>AccessibleStateSet_isEmpty ()</title>
+<indexterm zone="AccessibleStateSet-isEmpty"><primary sortas="AccessibleStateSet_isEmpty">AccessibleStateSet_isEmpty</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleStateSet_isEmpty          (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj);</programlisting>
+<para>
+Determine whether a given <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> is the empty set.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the given <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> contains no (true) states,
+         otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStateSet-remove" role="function">
+<title>AccessibleStateSet_remove ()</title>
+<indexterm zone="AccessibleStateSet-remove"><primary sortas="AccessibleStateSet_remove">AccessibleStateSet_remove</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleStateSet_remove           (<link linkend="AccessibleStateSet">AccessibleStateSet</link> *obj,
+                                                         <link linkend="AccessibleState">AccessibleState</link> state);</programlisting>
+<para>
+Remove a particular <link linkend="AccessibleState"><type>AccessibleState</type></link> to an <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> (i.e. set the
+      given state to <link linkend="FALSE--CAPS"><type>FALSE</type></link> in the stateset.)</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>state</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleState"><type>AccessibleState</type></link> to be removed from the specified <link linkend="AccessibleStateSet"><type>AccessibleStateSet</type></link>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

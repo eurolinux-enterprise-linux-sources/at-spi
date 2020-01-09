@@ -1,0 +1,178 @@
+<refentry id="at-spi-cspi-AccessibleApplication-API">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-AccessibleApplication-API.top_of_page">AccessibleApplication API</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>AccessibleApplication API</refname>
+<refpurpose>The interface implemented by the topmost Accessible in an application's
+hierarchy of Accessible objects.</refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-AccessibleApplication-API.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+<link linkend="void">void</link>                <link linkend="AccessibleApplication-ref">AccessibleApplication_ref</link>           (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleApplication-unref">AccessibleApplication_unref</link>         (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);
+<link linkend="char">char</link> *              <link linkend="AccessibleApplication-getToolkitName">AccessibleApplication_getToolkitName</link>
+                                                        (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);
+<link linkend="char">char</link> *              <link linkend="AccessibleApplication-getVersion">AccessibleApplication_getVersion</link>    (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);
+<link linkend="long">long</link>                <link linkend="AccessibleApplication-getID">AccessibleApplication_getID</link>         (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);
+<link linkend="char">char</link> *              <link linkend="AccessibleApplication-getLocale">AccessibleApplication_getLocale</link>     (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj,
+                                                         <link linkend="int">int</link> lc_category);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleApplication-pause">AccessibleApplication_pause</link>         (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleApplication-resume">AccessibleApplication_resume</link>        (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-AccessibleApplication-API.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+This interface is implemented on the topmost object in an application's
+hierarchy.  It is primarily a marker interface, though certain properties
+associated with an application, such as the application's current default
+locale, are also exposed.
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-AccessibleApplication-API.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="AccessibleApplication-ref" role="function">
+<title>AccessibleApplication_ref ()</title>
+<indexterm zone="AccessibleApplication-ref"><primary sortas="AccessibleApplication_ref">AccessibleApplication_ref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleApplication_ref           (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);</programlisting>
+<para>
+Increment the reference count for an <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleApplication-unref" role="function">
+<title>AccessibleApplication_unref ()</title>
+<indexterm zone="AccessibleApplication-unref"><primary sortas="AccessibleApplication_unref">AccessibleApplication_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleApplication_unref         (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);</programlisting>
+<para>
+Decrement the reference count for an <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleApplication-getToolkitName" role="function">
+<title>AccessibleApplication_getToolkitName ()</title>
+<indexterm zone="AccessibleApplication-getToolkitName"><primary sortas="AccessibleApplication_getToolkitName">AccessibleApplication_getToolkitName</primary></indexterm><programlisting><link linkend="char">char</link> *              AccessibleApplication_getToolkitName
+                                                        (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);</programlisting>
+<para>
+Get the name of the UI toolkit used by an <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a UTF-8 string indicating which UI toolkit is
+         used by an application.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleApplication-getVersion" role="function">
+<title>AccessibleApplication_getVersion ()</title>
+<indexterm zone="AccessibleApplication-getVersion"><primary sortas="AccessibleApplication_getVersion">AccessibleApplication_getVersion</primary></indexterm><programlisting><link linkend="char">char</link> *              AccessibleApplication_getVersion    (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);</programlisting>
+<para>
+Get the version of the UI toolkit used by an
+     <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> instance.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> being queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a UTF-8 string indicating the version of the UI toolkit
+         which is used by an application.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleApplication-getID" role="function">
+<title>AccessibleApplication_getID ()</title>
+<indexterm zone="AccessibleApplication-getID"><primary sortas="AccessibleApplication_getID">AccessibleApplication_getID</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleApplication_getID         (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);</programlisting>
+<para>
+Get the unique ID assigned by the Registry to an
+     <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> instance.
+(Not Yet Implemented by the registry).</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> being queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a unique <link linkend="long"><type>long</type></link> integer associated with the application
+         by the Registry, or 0 if the application is not registered.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleApplication-getLocale" role="function">
+<title>AccessibleApplication_getLocale ()</title>
+<indexterm zone="AccessibleApplication-getLocale"><primary sortas="AccessibleApplication_getLocale">AccessibleApplication_getLocale</primary></indexterm><programlisting><link linkend="char">char</link> *              AccessibleApplication_getLocale     (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj,
+                                                         <link linkend="int">int</link> lc_category);</programlisting>
+<para>
+Get a POSIX-compliant string describing the application's current
+locale setting for a particular <parameter>lctype</parameter> category.
+</para>
+<para>
+<parameter>Since</parameter>: AT-SPI 1.4</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleApplication"><type>AccessibleApplication</type></link> being queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>lc_category</parameter>&#160;:</term>
+<listitem><simpara> one of the POSIX LC_TYPE enumeration, for instance
+LC_MESSAGES.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a POSIX-compliant locale string, e.g. "C", "pt_BR", "sr<parameter>latn</parameter>", etc.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleApplication-pause" role="function">
+<title>AccessibleApplication_pause ()</title>
+<indexterm zone="AccessibleApplication-pause"><primary sortas="AccessibleApplication_pause">AccessibleApplication_pause</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleApplication_pause         (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);</programlisting>
+<para>
+Attempt to pause the application (used when client event queue is
+ over-full).
+Not Yet Implemented.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the application was paused successfully, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleApplication-resume" role="function">
+<title>AccessibleApplication_resume ()</title>
+<indexterm zone="AccessibleApplication-resume"><primary sortas="AccessibleApplication_resume">AccessibleApplication_resume</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleApplication_resume        (<link linkend="AccessibleApplication">AccessibleApplication</link> *obj);</programlisting>
+<para>
+Attempt to resume the application (used after <link linkend="AccessibleApplication-pause"><type>AccessibleApplication_pause</type></link>).
+Not Yet Implemented.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if application processing resumed successfully, <link linkend="FALSE--CAPS"><type>FALSE</type></link> otherwise.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

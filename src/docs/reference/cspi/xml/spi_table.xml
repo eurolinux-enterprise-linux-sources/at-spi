@@ -1,0 +1,653 @@
+<refentry id="at-spi-cspi-AccessibleTable-Interface">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-AccessibleTable-Interface.top_of_page">AccessibleTable Interface</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>AccessibleTable Interface</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-AccessibleTable-Interface.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+<link linkend="void">void</link>                <link linkend="AccessibleTable-ref">AccessibleTable_ref</link>                 (<link linkend="AccessibleTable">AccessibleTable</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleTable-unref">AccessibleTable_unref</link>               (<link linkend="AccessibleTable">AccessibleTable</link> *obj);
+<link linkend="Accessible">Accessible</link> *        <link linkend="AccessibleTable-getAccessibleAt">AccessibleTable_getAccessibleAt</link>     (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row,
+                                                         long <link linkend="int">int</link> column);
+<link linkend="Accessible">Accessible</link> *        <link linkend="AccessibleTable-getCaption">AccessibleTable_getCaption</link>          (<link linkend="AccessibleTable">AccessibleTable</link> *obj);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getColumnAtIndex">AccessibleTable_getColumnAtIndex</link>    (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> index);
+<link linkend="char">char</link> *              <link linkend="AccessibleTable-getColumnDescription">AccessibleTable_getColumnDescription</link>
+                                                        (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> column);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getColumnExtentAt">AccessibleTable_getColumnExtentAt</link>   (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row,
+                                                         long <link linkend="int">int</link> column);
+<link linkend="Accessible">Accessible</link> *        <link linkend="AccessibleTable-getColumnHeader">AccessibleTable_getColumnHeader</link>     (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> column);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getIndexAt">AccessibleTable_getIndexAt</link>          (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row,
+                                                         long <link linkend="int">int</link> column);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getNColumns">AccessibleTable_getNColumns</link>         (<link linkend="AccessibleTable">AccessibleTable</link> *obj);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getNRows">AccessibleTable_getNRows</link>            (<link linkend="AccessibleTable">AccessibleTable</link> *obj);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getNSelectedColumns">AccessibleTable_getNSelectedColumns</link> (<link linkend="AccessibleTable">AccessibleTable</link> *obj);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getNSelectedRows">AccessibleTable_getNSelectedRows</link>    (<link linkend="AccessibleTable">AccessibleTable</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleTable-getRowColumnExtentsAtIndex">AccessibleTable_getRowColumnExtentsAtIndex</link>
+                                                        (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> index,
+                                                         long <link linkend="int">int</link> *row,
+                                                         long <link linkend="int">int</link> *col,
+                                                         long <link linkend="int">int</link> *row_extents,
+                                                         long <link linkend="int">int</link> *col_extents,
+                                                         long <link linkend="int">int</link> *is_selected);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getRowAtIndex">AccessibleTable_getRowAtIndex</link>       (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> index);
+<link linkend="char">char</link> *              <link linkend="AccessibleTable-getRowDescription">AccessibleTable_getRowDescription</link>   (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getRowExtentAt">AccessibleTable_getRowExtentAt</link>      (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row,
+                                                         long <link linkend="int">int</link> column);
+<link linkend="Accessible">Accessible</link> *        <link linkend="AccessibleTable-getRowHeader">AccessibleTable_getRowHeader</link>        (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getSelectedRows">AccessibleTable_getSelectedRows</link>     (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> **selectedRows);
+<link linkend="long">long</link>                <link linkend="AccessibleTable-getSelectedColumns">AccessibleTable_getSelectedColumns</link>  (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> **selectedColumns);
+<link linkend="Accessible">Accessible</link> *        <link linkend="AccessibleTable-getSummary">AccessibleTable_getSummary</link>          (<link linkend="AccessibleTable">AccessibleTable</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleTable-isColumnSelected">AccessibleTable_isColumnSelected</link>    (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> column);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleTable-isRowSelected">AccessibleTable_isRowSelected</link>       (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleTable-isSelected">AccessibleTable_isSelected</link>          (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row,
+                                                         long <link linkend="int">int</link> column);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleTable-addColumnSelection">AccessibleTable_addColumnSelection</link>  (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> column);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleTable-addRowSelection">AccessibleTable_addRowSelection</link>     (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleTable-removeColumnSelection">AccessibleTable_removeColumnSelection</link>
+                                                        (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> column);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleTable-removeRowSelection">AccessibleTable_removeRowSelection</link>  (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-AccessibleTable-Interface.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-AccessibleTable-Interface.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="AccessibleTable-ref" role="function">
+<title>AccessibleTable_ref ()</title>
+<indexterm zone="AccessibleTable-ref"><primary sortas="AccessibleTable_ref">AccessibleTable_ref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleTable_ref                 (<link linkend="AccessibleTable">AccessibleTable</link> *obj);</programlisting>
+<para>
+Increment the reference count for an <link linkend="AccessibleTable"><type>AccessibleTable</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-unref" role="function">
+<title>AccessibleTable_unref ()</title>
+<indexterm zone="AccessibleTable-unref"><primary sortas="AccessibleTable_unref">AccessibleTable_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleTable_unref               (<link linkend="AccessibleTable">AccessibleTable</link> *obj);</programlisting>
+<para>
+Decrement the reference count for an <link linkend="AccessibleTable"><type>AccessibleTable</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getAccessibleAt" role="function">
+<title>AccessibleTable_getAccessibleAt ()</title>
+<indexterm zone="AccessibleTable-getAccessibleAt"><primary sortas="AccessibleTable_getAccessibleAt">AccessibleTable_getAccessibleAt</primary></indexterm><programlisting><link linkend="Accessible">Accessible</link> *        AccessibleTable_getAccessibleAt     (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row,
+                                                         long <link linkend="int">int</link> column);</programlisting>
+<para>
+Get the table cell at the specified row and column indices.
+         To get the accessible object at a particular (x, y) screen coordinate,
+         use #<link linkend="Accessible-getAccessibleAtPoint"><function>Accessible_getAccessibleAtPoint()</function></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> the specified table row, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>column</parameter>&#160;:</term>
+<listitem><simpara> the specified table column, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> an <link linkend="Accessible"><type>Accessible</type></link> object representing the specified table cell.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getCaption" role="function">
+<title>AccessibleTable_getCaption ()</title>
+<indexterm zone="AccessibleTable-getCaption"><primary sortas="AccessibleTable_getCaption">AccessibleTable_getCaption</primary></indexterm><programlisting><link linkend="Accessible">Accessible</link> *        AccessibleTable_getCaption          (<link linkend="AccessibleTable">AccessibleTable</link> *obj);</programlisting>
+<para>
+Get an accessible representation of the caption for an <link linkend="AccessibleTable"><type>AccessibleTable</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> an <link linkend="Accessible"><type>Accessible</type></link> object that serves as the table's caption.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getColumnAtIndex" role="function">
+<title>AccessibleTable_getColumnAtIndex ()</title>
+<indexterm zone="AccessibleTable-getColumnAtIndex"><primary sortas="AccessibleTable_getColumnAtIndex">AccessibleTable_getColumnAtIndex</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getColumnAtIndex    (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> index);</programlisting>
+<para>
+Get the table column index occupied by the child at a particular 1-D child index.
+</para>
+<para>
+<parameter>see</parameter> #<link linkend="AccessibleTable-getIndexAt"><function>AccessibleTable_getIndexAt()</function></link>, #<link linkend="AccessibleTable-getRowAtIndex"><function>AccessibleTable_getRowAtIndex()</function></link></para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>index</parameter>&#160;:</term>
+<listitem><simpara> the specified child index, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a long integer indicating the first column spanned by the child of a
+         table, at the specified 1-D (zero-offset) <parameter>index</parameter>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getColumnDescription" role="function">
+<title>AccessibleTable_getColumnDescription ()</title>
+<indexterm zone="AccessibleTable-getColumnDescription"><primary sortas="AccessibleTable_getColumnDescription">AccessibleTable_getColumnDescription</primary></indexterm><programlisting><link linkend="char">char</link> *              AccessibleTable_getColumnDescription
+                                                        (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> column);</programlisting>
+<para>
+Get a text description of a particular table column.  This differs from
+AccessibleTable_getColumnHeader, which returns an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>column</parameter>&#160;:</term>
+<listitem><simpara> the specified table column, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a UTF-8 string describing the specified table column, if available.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getColumnExtentAt" role="function">
+<title>AccessibleTable_getColumnExtentAt ()</title>
+<indexterm zone="AccessibleTable-getColumnExtentAt"><primary sortas="AccessibleTable_getColumnExtentAt">AccessibleTable_getColumnExtentAt</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getColumnExtentAt   (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row,
+                                                         long <link linkend="int">int</link> column);</programlisting>
+<para>
+Get the number of columns spanned by the table cell at the specific row and column.
+(some tables can have cells which span multiple rows and/or columns).</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> the specified table row, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>column</parameter>&#160;:</term>
+<listitem><simpara> the specified table column, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a long integer indicating the number of columns spanned by the specified cell.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getColumnHeader" role="function">
+<title>AccessibleTable_getColumnHeader ()</title>
+<indexterm zone="AccessibleTable-getColumnHeader"><primary sortas="AccessibleTable_getColumnHeader">AccessibleTable_getColumnHeader</primary></indexterm><programlisting><link linkend="Accessible">Accessible</link> *        AccessibleTable_getColumnHeader     (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> column);</programlisting>
+<para>
+Get the header associated with a table column, if available.  This differs from
+AccessibleTable_getColumnDescription, which returns a string.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>column</parameter>&#160;:</term>
+<listitem><simpara> the specified table column, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="Accessible"><type>Accessible</type></link> representatin of the specified table column, if available.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getIndexAt" role="function">
+<title>AccessibleTable_getIndexAt ()</title>
+<indexterm zone="AccessibleTable-getIndexAt"><primary sortas="AccessibleTable_getIndexAt">AccessibleTable_getIndexAt</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getIndexAt          (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row,
+                                                         long <link linkend="int">int</link> column);</programlisting>
+<para>
+Get the 1-D child index corresponding to the specified 2-D row and column indices.
+         To get the accessible object at a particular (x, y) screen coordinate,
+         use #<link linkend="Accessible-getAccessibleAtPoint"><function>Accessible_getAccessibleAtPoint()</function></link>.
+<parameter>see</parameter> #<link linkend="AccessibleTable-getRowAtIndex"><function>AccessibleTable_getRowAtIndex()</function></link>, #<link linkend="AccessibleTable-getColumnAtIndex"><function>AccessibleTable_getColumnAtIndex()</function></link></para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> the specified table row, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>column</parameter>&#160;:</term>
+<listitem><simpara> the specified table column, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a long integer which serves as the index of a specified cell in the
+         table, in a form usable by #<link linkend="Accessible-getChildAtIndex"><function>Accessible_getChildAtIndex()</function></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getNColumns" role="function">
+<title>AccessibleTable_getNColumns ()</title>
+<indexterm zone="AccessibleTable-getNColumns"><primary sortas="AccessibleTable_getNColumns">AccessibleTable_getNColumns</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getNColumns         (<link linkend="AccessibleTable">AccessibleTable</link> *obj);</programlisting>
+<para>
+Get the number of columns in an <link linkend="AccessibleTable"><type>AccessibleTable</type></link>,
+       exclusive of any columns that are programmatically hidden, but inclusive
+       of columns that may be outside of the current scrolling window or viewport.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="long"><type>long</type></link> integer indicating the number of columns in the table.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getNRows" role="function">
+<title>AccessibleTable_getNRows ()</title>
+<indexterm zone="AccessibleTable-getNRows"><primary sortas="AccessibleTable_getNRows">AccessibleTable_getNRows</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getNRows            (<link linkend="AccessibleTable">AccessibleTable</link> *obj);</programlisting>
+<para>
+Get the number of rows in an <link linkend="AccessibleTable"><type>AccessibleTable</type></link>,
+       exclusive of any rows that are programmatically hidden, but inclusive
+       of rows that may be outside of the current scrolling window or viewport.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="long"><type>long</type></link> integer indicating the number of rows in the table.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getNSelectedColumns" role="function">
+<title>AccessibleTable_getNSelectedColumns ()</title>
+<indexterm zone="AccessibleTable-getNSelectedColumns"><primary sortas="AccessibleTable_getNSelectedColumns">AccessibleTable_getNSelectedColumns</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getNSelectedColumns (<link linkend="AccessibleTable">AccessibleTable</link> *obj);</programlisting>
+<para>
+Query a table to find out how many columns are currently selected.  Not all tables
+ support column selection.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a long integer indicating the number of columns currently selected.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getNSelectedRows" role="function">
+<title>AccessibleTable_getNSelectedRows ()</title>
+<indexterm zone="AccessibleTable-getNSelectedRows"><primary sortas="AccessibleTable_getNSelectedRows">AccessibleTable_getNSelectedRows</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getNSelectedRows    (<link linkend="AccessibleTable">AccessibleTable</link> *obj);</programlisting>
+<para>
+Query a table to find out how many rows are currently selected.  Not all tables
+ support row selection.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a long integer indicating the number of rows currently selected.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getRowColumnExtentsAtIndex" role="function">
+<title>AccessibleTable_getRowColumnExtentsAtIndex ()</title>
+<indexterm zone="AccessibleTable-getRowColumnExtentsAtIndex"><primary sortas="AccessibleTable_getRowColumnExtentsAtIndex">AccessibleTable_getRowColumnExtentsAtIndex</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleTable_getRowColumnExtentsAtIndex
+                                                        (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> index,
+                                                         long <link linkend="int">int</link> *row,
+                                                         long <link linkend="int">int</link> *col,
+                                                         long <link linkend="int">int</link> *row_extents,
+                                                         long <link linkend="int">int</link> *col_extents,
+                                                         long <link linkend="int">int</link> *is_selected);</programlisting>
+<para>
+Given a child index, determine the row and column indices and 
+extents, and whether the cell is currently selected.  If
+the child at \c index is not a cell (for instance, if it is 
+a summary, caption, etc.), \c False is returned.
+</para>
+<para>
+Example:
+If the Table child at index '6' extends across columns 5 and 6 of
+row 2 of a Table instance, and is currently selected, then
+</para>
+<para>
+retval = table::getRowColumnExtentsAtIndex (6, row, col, 
+                                            row_extents,
+                                            col_extents,
+                                            is_selected);
+</para>
+<para>
+will return True, and after the call
+row, col, row_extents, col_extents,
+and \c is_selected will contain 2, 5, 1, 2, and 
+True, respectively.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>index</parameter>&#160;:</term>
+<listitem><simpara> the index of the Table child whose row/column 
+extents are requested.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> back-filled with the first table row associated with
+the cell with child index \c index.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>col</parameter>&#160;:</term>
+<listitem><simpara> back-filled with the first table column associated 
+with the cell with child index \c index.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row_extents</parameter>&#160;:</term>
+<listitem><simpara> back-filled with the number of table rows 
+across which child \c i extends.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>col_extents</parameter>&#160;:</term>
+<listitem><simpara> back-filled with the number of table columns
+across which child \c i extends.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>is_selected</parameter>&#160;:</term>
+<listitem><simpara> a boolean which is back-filled with \c True
+if the child at index \c i corresponds to a selected table cell,
+\c False otherwise.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> \c True if the index is associated with a valid table
+cell, \c False if the index does not correspond to a cell.  If 
+\c False is returned, the values of the out parameters are 
+undefined.
+
+Since AT-SPI 1.7.0
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getRowAtIndex" role="function">
+<title>AccessibleTable_getRowAtIndex ()</title>
+<indexterm zone="AccessibleTable-getRowAtIndex"><primary sortas="AccessibleTable_getRowAtIndex">AccessibleTable_getRowAtIndex</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getRowAtIndex       (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> index);</programlisting>
+<para>
+Get the table row index occupied by the child at a particular 1-D child index.
+</para>
+<para>
+<parameter>see</parameter> #<link linkend="AccessibleTable-getIndexAt"><function>AccessibleTable_getIndexAt()</function></link>, #<link linkend="AccessibleTable-getColumnAtIndex"><function>AccessibleTable_getColumnAtIndex()</function></link></para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>index</parameter>&#160;:</term>
+<listitem><simpara> the specified child index, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a long integer indicating the first row spanned by the child of a
+         table, at the specified 1-D (zero-offset) <parameter>index</parameter>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getRowDescription" role="function">
+<title>AccessibleTable_getRowDescription ()</title>
+<indexterm zone="AccessibleTable-getRowDescription"><primary sortas="AccessibleTable_getRowDescription">AccessibleTable_getRowDescription</primary></indexterm><programlisting><link linkend="char">char</link> *              AccessibleTable_getRowDescription   (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row);</programlisting>
+<para>
+Get a text description of a particular table row.  This differs from
+AccessibleTable_getRowHeader, which returns an <link linkend="Accessible"><type>Accessible</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> the specified table row, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a UTF-8 string describing the specified table row, if available.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getRowExtentAt" role="function">
+<title>AccessibleTable_getRowExtentAt ()</title>
+<indexterm zone="AccessibleTable-getRowExtentAt"><primary sortas="AccessibleTable_getRowExtentAt">AccessibleTable_getRowExtentAt</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getRowExtentAt      (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row,
+                                                         long <link linkend="int">int</link> column);</programlisting>
+<para>
+Get the number of rows spanned by the table cell at the specific row and column.
+(some tables can have cells which span multiple rows and/or columns).</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> the specified table row, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>column</parameter>&#160;:</term>
+<listitem><simpara> the specified table column, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a long integer indicating the number of rows spanned by the specified cell.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getRowHeader" role="function">
+<title>AccessibleTable_getRowHeader ()</title>
+<indexterm zone="AccessibleTable-getRowHeader"><primary sortas="AccessibleTable_getRowHeader">AccessibleTable_getRowHeader</primary></indexterm><programlisting><link linkend="Accessible">Accessible</link> *        AccessibleTable_getRowHeader        (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row);</programlisting>
+<para>
+Get the header associated with a table row, if available.  This differs from
+AccessibleTable_getRowDescription, which returns a string.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> the specified table row, zero-indexed.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a <link linkend="Accessible"><type>Accessible</type></link> representatin of the specified table row, if available.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getSelectedRows" role="function">
+<title>AccessibleTable_getSelectedRows ()</title>
+<indexterm zone="AccessibleTable-getSelectedRows"><primary sortas="AccessibleTable_getSelectedRows">AccessibleTable_getSelectedRows</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getSelectedRows     (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> **selectedRows);</programlisting>
+<para>
+Query a table for a list of indices of rows which are currently selected.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>selectedRows</parameter>&#160;:</term>
+<listitem><simpara> a doubly indirected pointer which will be set to the address
+      of an array of long integers, specifying which rows are currently selected.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a long integer indicating the length of the array returned in <parameter>selectedRows</parameter>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getSelectedColumns" role="function">
+<title>AccessibleTable_getSelectedColumns ()</title>
+<indexterm zone="AccessibleTable-getSelectedColumns"><primary sortas="AccessibleTable_getSelectedColumns">AccessibleTable_getSelectedColumns</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleTable_getSelectedColumns  (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> **selectedColumns);</programlisting>
+<para>
+Query a table for a list of indices of columns which are currently selected.
+      Not all tables support column selection.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>selectedColumns</parameter>&#160;:</term>
+<listitem><simpara> a doubly indirected pointer which will be set to the address
+      of an array of long integers, specifying which columns are currently selected.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a long integer indicating the length of the array returned in <parameter>selectedColumns</parameter>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-getSummary" role="function">
+<title>AccessibleTable_getSummary ()</title>
+<indexterm zone="AccessibleTable-getSummary"><primary sortas="AccessibleTable_getSummary">AccessibleTable_getSummary</primary></indexterm><programlisting><link linkend="Accessible">Accessible</link> *        AccessibleTable_getSummary          (<link linkend="AccessibleTable">AccessibleTable</link> *obj);</programlisting>
+<para>
+Get an accessible object which summarizes the contents of an <link linkend="AccessibleTable"><type>AccessibleTable</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> an <link linkend="Accessible"><type>Accessible</type></link> object that serves as the table's summary (often a
+         reduced <link linkend="AccessibleTable"><type>AccessibleTable</type></link>).
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-isColumnSelected" role="function">
+<title>AccessibleTable_isColumnSelected ()</title>
+<indexterm zone="AccessibleTable-isColumnSelected"><primary sortas="AccessibleTable_isColumnSelected">AccessibleTable_isColumnSelected</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleTable_isColumnSelected    (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> column);</programlisting>
+<para>
+Determine whether specified table column is selected.
+Not all tables support column selection.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>column</parameter>&#160;:</term>
+<listitem><simpara> the zero-indexed column number of the column being queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the specified column is currently selected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> if not.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-isRowSelected" role="function">
+<title>AccessibleTable_isRowSelected ()</title>
+<indexterm zone="AccessibleTable-isRowSelected"><primary sortas="AccessibleTable_isRowSelected">AccessibleTable_isRowSelected</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleTable_isRowSelected       (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row);</programlisting>
+<para>
+Determine whether a table row is selected.  Not all tables support row selection.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> the zero-indexed row number of the row being queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the specified row is currently selected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> if not.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-isSelected" role="function">
+<title>AccessibleTable_isSelected ()</title>
+<indexterm zone="AccessibleTable-isSelected"><primary sortas="AccessibleTable_isSelected">AccessibleTable_isSelected</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleTable_isSelected          (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row,
+                                                         long <link linkend="int">int</link> column);</programlisting>
+<para>
+Determine whether the cell at a specific row and column is selected.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> the zero-indexed row of the cell being queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>column</parameter>&#160;:</term>
+<listitem><simpara> the zero-indexed column of the cell being queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the specified cell is currently selected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> if not.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-addColumnSelection" role="function">
+<title>AccessibleTable_addColumnSelection ()</title>
+<indexterm zone="AccessibleTable-addColumnSelection"><primary sortas="AccessibleTable_addColumnSelection">AccessibleTable_addColumnSelection</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleTable_addColumnSelection  (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> column);</programlisting>
+<para>
+Select the specified column, adding it to the current column selection.
+Not all tables support column selection.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>column</parameter>&#160;:</term>
+<listitem><simpara> the zero-indexed column number of the column being selected.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the specified column was successfully selected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> if not.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-addRowSelection" role="function">
+<title>AccessibleTable_addRowSelection ()</title>
+<indexterm zone="AccessibleTable-addRowSelection"><primary sortas="AccessibleTable_addRowSelection">AccessibleTable_addRowSelection</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleTable_addRowSelection     (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row);</programlisting>
+<para>
+Select the specified row, adding it to the current row selection.
+Not all tables support row selection.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> the zero-indexed row number of the row being selected.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the specified row was successfully selected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> if not.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-removeColumnSelection" role="function">
+<title>AccessibleTable_removeColumnSelection ()</title>
+<indexterm zone="AccessibleTable-removeColumnSelection"><primary sortas="AccessibleTable_removeColumnSelection">AccessibleTable_removeColumnSelection</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleTable_removeColumnSelection
+                                                        (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> column);</programlisting>
+<para>
+De-select the specified column, removing it to the current column selection.
+Not all tables support column selection.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>column</parameter>&#160;:</term>
+<listitem><simpara> the zero-indexed column number of the column being de-selected.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the specified column was successfully de-selected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> if not.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleTable-removeRowSelection" role="function">
+<title>AccessibleTable_removeRowSelection ()</title>
+<indexterm zone="AccessibleTable-removeRowSelection"><primary sortas="AccessibleTable_removeRowSelection">AccessibleTable_removeRowSelection</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleTable_removeRowSelection  (<link linkend="AccessibleTable">AccessibleTable</link> *obj,
+                                                         long <link linkend="int">int</link> row);</programlisting>
+<para>
+De-select the specified row, removing it to the current row selection.
+Not all tables support row selection.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleTable"><type>AccessibleTable</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>row</parameter>&#160;:</term>
+<listitem><simpara> the zero-indexed number of the row being deselected.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if the specified row was successfully de-selected, <link linkend="FALSE--CAPS"><type>FALSE</type></link> if not.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

@@ -1,0 +1,945 @@
+<refentry id="at-spi-cspi-Registry-queries">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-Registry-queries.top_of_page">Registry queries</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>Registry queries</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-Registry-queries.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+enum                <link linkend="AccessibleKeySynthType">AccessibleKeySynthType</link>;
+<link linkend="int">int</link>                 <link linkend="SPI-getDesktopCount">SPI_getDesktopCount</link>                 (void);
+<link linkend="Accessible">Accessible</link> *        <link linkend="SPI-getDesktop">SPI_getDesktop</link>                      (<link linkend="int">int</link> i);
+<link linkend="int">int</link>                 <link linkend="SPI-getDesktopList">SPI_getDesktopList</link>                  (<link linkend="Accessible">Accessible</link> ***desktop_list);
+<link linkend="void">void</link>                <link linkend="SPI-freeDesktopList">SPI_freeDesktopList</link>                 (<link linkend="Accessible">Accessible</link> **desktop_list);
+
+<link linkend="SPIBoolean">SPIBoolean</link>          (<link linkend="AccessibleKeystrokeListenerCB">*AccessibleKeystrokeListenerCB</link>)    (const <link linkend="AccessibleKeystroke">AccessibleKeystroke</link> *stroke,
+                                                         <link linkend="void">void</link> *user_data);
+typedef             <link linkend="AccessibleKeyEventMask">AccessibleKeyEventMask</link>;
+typedef             <link linkend="AccessibleModifierMaskType">AccessibleModifierMaskType</link>;
+typedef             <link linkend="AccessibleKeyMaskType">AccessibleKeyMaskType</link>;
+typedef             <link linkend="AccessibleKeyEventType">AccessibleKeyEventType</link>;
+enum                <link linkend="AccessibleKeyListenerSyncType">AccessibleKeyListenerSyncType</link>;
+typedef             <link linkend="AccessibleKeystroke">AccessibleKeystroke</link>;
+<link linkend="AccessibleKeySet">AccessibleKeySet</link> *  <link linkend="SPI-createAccessibleKeySet">SPI_createAccessibleKeySet</link>          (<link linkend="int">int</link> len,
+                                                         const <link linkend="char">char</link> *keysyms,
+                                                         <link linkend="short">short</link> *keycodes,
+                                                         const <link linkend="char">char</link> **keystrings);
+<link linkend="void">void</link>                <link linkend="SPI-freeAccessibleKeySet">SPI_freeAccessibleKeySet</link>            (<link linkend="AccessibleKeySet">AccessibleKeySet</link> *keyset);
+<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> * <link linkend="SPI-createAccessibleKeystrokeListener">SPI_createAccessibleKeystrokeListener</link>
+                                                        (<link linkend="AccessibleKeystrokeListenerCB">AccessibleKeystrokeListenerCB</link> callback,
+                                                         <link linkend="void">void</link> *user_data);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="SPI-registerGlobalEventListener">SPI_registerGlobalEventListener</link>     (<link linkend="AccessibleEventListener">AccessibleEventListener</link> *listener,
+                                                         const <link linkend="char">char</link> *eventType);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="SPI-deregisterGlobalEventListener">SPI_deregisterGlobalEventListener</link>   (<link linkend="AccessibleEventListener">AccessibleEventListener</link> *listener,
+                                                         const <link linkend="char">char</link> *eventType);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="SPI-deregisterGlobalEventListenerAll">SPI_deregisterGlobalEventListenerAll</link>
+                                                        (<link linkend="AccessibleEventListener">AccessibleEventListener</link> *listener);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="SPI-registerAccessibleKeystrokeListener">SPI_registerAccessibleKeystrokeListener</link>
+                                                        (<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> *listener,
+                                                         <link linkend="AccessibleKeySet">AccessibleKeySet</link> *keys,
+                                                         <link linkend="AccessibleKeyMaskType">AccessibleKeyMaskType</link> modmask,
+                                                         <link linkend="AccessibleKeyEventMask">AccessibleKeyEventMask</link> eventmask,
+                                                         <link linkend="AccessibleKeyListenerSyncType">AccessibleKeyListenerSyncType</link> sync_type);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="SPI-deregisterAccessibleKeystrokeListener">SPI_deregisterAccessibleKeystrokeListener</link>
+                                                        (<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> *listener,
+                                                         <link linkend="AccessibleKeyMaskType">AccessibleKeyMaskType</link> modmask);
+<link linkend="void">void</link>                <link linkend="AccessibleKeystrokeListener-unref">AccessibleKeystrokeListener_unref</link>   (<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> *listener);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleKeystrokeListener-removeCallback">AccessibleKeystrokeListener_removeCallback</link>
+                                                        (<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> *listener,
+                                                         <link linkend="AccessibleKeystrokeListenerCB">AccessibleKeystrokeListenerCB</link> callback);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleKeystrokeListener-addCallback">AccessibleKeystrokeListener_addCallback</link>
+                                                        (<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> *listener,
+                                                         <link linkend="AccessibleKeystrokeListenerCB">AccessibleKeystrokeListenerCB</link> callback,
+                                                         <link linkend="void">void</link> *user_data);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="SPI-generateKeyboardEvent">SPI_generateKeyboardEvent</link>           (long <link linkend="int">int</link> keyval,
+                                                         <link linkend="char">char</link> *keystring,
+                                                         <link linkend="AccessibleKeySynthType">AccessibleKeySynthType</link> synth_type);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="SPI-generateMouseEvent">SPI_generateMouseEvent</link>              (long <link linkend="int">int</link> x,
+                                                         long <link linkend="int">int</link> y,
+                                                         <link linkend="char">char</link> *name);
+                    <link linkend="AccessibleDeviceEvent">AccessibleDeviceEvent</link>;
+typedef             <link linkend="AccessibleDeviceEventMask">AccessibleDeviceEventMask</link>;
+enum                <link linkend="AccessibleDeviceEventType">AccessibleDeviceEventType</link>;
+<link linkend="SPIBoolean">SPIBoolean</link>          (<link linkend="AccessibleDeviceListenerCB">*AccessibleDeviceListenerCB</link>)       (const <link linkend="AccessibleDeviceEvent">AccessibleDeviceEvent</link> *stroke,
+                                                         <link linkend="void">void</link> *user_data);
+<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> * <link linkend="SPI-createAccessibleDeviceListener">SPI_createAccessibleDeviceListener</link>
+                                                        (<link linkend="AccessibleDeviceListenerCB">AccessibleDeviceListenerCB</link> callback,
+                                                         <link linkend="void">void</link> *user_data);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="SPI-registerDeviceEventListener">SPI_registerDeviceEventListener</link>     (<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> *listener,
+                                                         <link linkend="AccessibleDeviceEventMask">AccessibleDeviceEventMask</link> eventmask,
+                                                         <link linkend="void">void</link> *filter);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="SPI-deregisterDeviceEventListener">SPI_deregisterDeviceEventListener</link>   (<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> *listener,
+                                                         <link linkend="void">void</link> *filter);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleDeviceListener-addCallback">AccessibleDeviceListener_addCallback</link>
+                                                        (<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> *listener,
+                                                         <link linkend="AccessibleDeviceListenerCB">AccessibleDeviceListenerCB</link> callback,
+                                                         <link linkend="void">void</link> *user_data);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleDeviceListener-removeCallback">AccessibleDeviceListener_removeCallback</link>
+                                                        (<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> *listener,
+                                                         <link linkend="AccessibleDeviceListenerCB">AccessibleDeviceListenerCB</link> callback);
+<link linkend="void">void</link>                <link linkend="AccessibleDeviceListener-unref">AccessibleDeviceListener_unref</link>      (<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> *listener);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-Registry-queries.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-Registry-queries.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="AccessibleKeySynthType" role="enum">
+<title>enum AccessibleKeySynthType</title>
+<indexterm zone="AccessibleKeySynthType"><primary sortas="AccessibleKeySynthType">AccessibleKeySynthType</primary></indexterm><programlisting>typedef enum {
+  SPI_KEY_PRESS,
+  SPI_KEY_RELEASE, 
+  SPI_KEY_PRESSRELEASE,
+  SPI_KEY_SYM,
+  SPI_KEY_STRING
+} AccessibleKeySynthType;
+</programlisting>
+<para>
+Specifies the type of a generated event.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="SPI-KEY-PRESS--CAPS" role="constant">
+<term><literal>SPI_KEY_PRESS</literal></term>
+<listitem><simpara> Generates a keypress event (requires a subsequent <link linkend="SPI-KEY-RELEASE--CAPS"><type>SPI_KEY_RELEASE</type></link> event)
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-KEY-RELEASE--CAPS" role="constant">
+<term><literal>SPI_KEY_RELEASE</literal></term>
+<listitem><simpara> Generates a key-release event
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-KEY-PRESSRELEASE--CAPS" role="constant">
+<term><literal>SPI_KEY_PRESSRELEASE</literal></term>
+<listitem><simpara> Generates a key press/release event pair.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-KEY-SYM--CAPS" role="constant">
+<term><literal>SPI_KEY_SYM</literal></term>
+<listitem><simpara> Injects a "keysym" event into the stream, as if a press/release pair occurred; allows 
+the user to specify the key via its symbolic name, as opposed to simulating a hardware press of a 
+specific key.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-KEY-STRING--CAPS" role="constant">
+<term><literal>SPI_KEY_STRING</literal></term>
+<listitem><simpara> Injects one or more keysym events into the keyboard buffer, or directly inserts 
+a string value into the currently focussed text widget, if the widgets supports this.
+<link linkend="SPI-KEY-STRING--CAPS"><type>SPI_KEY_STRING</type></link> synthesis provides a shortcut for text substring insertion, and also allows the
+insertion of text which is not currently available via the current keyboard's keymap.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-getDesktopCount" role="function">
+<title>SPI_getDesktopCount ()</title>
+<indexterm zone="SPI-getDesktopCount"><primary sortas="SPI_getDesktopCount">SPI_getDesktopCount</primary></indexterm><programlisting><link linkend="int">int</link>                 SPI_getDesktopCount                 (void);</programlisting>
+<para>
+Get the number of virtual desktops.
+NOTE: currently multiple virtual desktops are not implemented, this
+      function always returns '1'.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> an integer indicating the number of active virtual desktops.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-getDesktop" role="function">
+<title>SPI_getDesktop ()</title>
+<indexterm zone="SPI-getDesktop"><primary sortas="SPI_getDesktop">SPI_getDesktop</primary></indexterm><programlisting><link linkend="Accessible">Accessible</link> *        SPI_getDesktop                      (<link linkend="int">int</link> i);</programlisting>
+<para>
+Get the virtual desktop indicated by index <parameter>i</parameter>.
+NOTE: currently multiple virtual desktops are not implemented, this
+      function always returns '1'.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>i</parameter>&#160;:</term>
+<listitem><simpara> an integer indicating which of the accessible desktops is to be returned.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to the 'i-th' virtual desktop's <link linkend="Accessible"><type>Accessible</type></link> representation.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-getDesktopList" role="function">
+<title>SPI_getDesktopList ()</title>
+<indexterm zone="SPI-getDesktopList"><primary sortas="SPI_getDesktopList">SPI_getDesktopList</primary></indexterm><programlisting><link linkend="int">int</link>                 SPI_getDesktopList                  (<link linkend="Accessible">Accessible</link> ***desktop_list);</programlisting>
+<para>
+Get the list of virtual desktops.  On return, <parameter>list</parameter> will point
+    to a newly-created, NULL terminated array of virtual desktop
+    pointers.
+    It is the responsibility of the caller to free this array when
+    it is no longer needed.
+</para>
+<para>
+Not Yet Implemented : this implementation always returns a single
+<link linkend="Accessible"><type>Accessible</type></link> desktop.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>desktop_list</parameter>&#160;:</term>
+<listitem><simpara> a pointer to an array of <link linkend="Accessible"><type>Accessible</type></link> references.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> an integer indicating how many virtual desktops have been
+         placed in the list pointed to by parameter <parameter>list</parameter>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-freeDesktopList" role="function">
+<title>SPI_freeDesktopList ()</title>
+<indexterm zone="SPI-freeDesktopList"><primary sortas="SPI_freeDesktopList">SPI_freeDesktopList</primary></indexterm><programlisting><link linkend="void">void</link>                SPI_freeDesktopList                 (<link linkend="Accessible">Accessible</link> **desktop_list);</programlisting>
+<para>
+This routine frees the memory associated with the list.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>desktop_list</parameter>&#160;:</term>
+<listitem><simpara> a pointer to an array of <link linkend="Accessible"><type>Accessible</type></link> objects
+as returned from <parameter>SPI_getDesktopList</parameter>
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleKeystrokeListenerCB" role="function">
+<title>AccessibleKeystrokeListenerCB ()</title>
+<indexterm zone="AccessibleKeystrokeListenerCB"><primary sortas="AccessibleKeystrokeListenerCB">AccessibleKeystrokeListenerCB</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          (*AccessibleKeystrokeListenerCB)    (const <link linkend="AccessibleKeystroke">AccessibleKeystroke</link> *stroke,
+                                                         <link linkend="void">void</link> *user_data);</programlisting>
+<para>
+A function prototype for a callback function called when a key event notification takes place.</para>
+<para>
+This is a function which is specified when creating a KeystrokeListener.
+It is called when an event being listened for occurs.
+If it returns TRUE, this indicates that the event should be consumed
+rather than passed through; only callbacks whose listeners are
+registered with the SPI_KEYLISTENER_ALL_WINDOWS or
+SPI_KEYLISTENER_CANCONSUME flags can be consumed.
+</para><variablelist role="params">
+<varlistentry><term><parameter>stroke</parameter>&#160;:</term>
+<listitem><simpara> the <link linkend="AccessibleKeystroke"><type>AccessibleKeystroke</type></link> event for which notification is taking place.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> data passed to the callback each time it is notified, according to the data
+which was passed in when the listener/callback was registered.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if the client wishes to consume the event and prevent its
+dispatch to other listeners or the currently focussed application, if
+the relevant callback was registered with the <link linkend="SPI-KEYLISTENER-CANCONSUME--CAPS"><type>SPI_KEYLISTENER_CANCONSUME</type></link> flag.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleKeyEventMask" role="typedef">
+<title>AccessibleKeyEventMask</title>
+<indexterm zone="AccessibleKeyEventMask"><primary sortas="AccessibleKeyEventMask">AccessibleKeyEventMask</primary></indexterm><programlisting>typedef unsigned long AccessibleKeyEventMask;
+</programlisting>
+<para>
+AccessibleKeyEventMask is a set of types of key events. It is used
+in SPI_registerAccessibleKeystroketListener to specify the events to be
+listener for.
+</para></refsect2>
+<refsect2 id="AccessibleModifierMaskType" role="typedef">
+<title>AccessibleModifierMaskType</title>
+<indexterm zone="AccessibleModifierMaskType"><primary sortas="AccessibleModifierMaskType">AccessibleModifierMaskType</primary></indexterm><programlisting>typedef unsigned long AccessibleModifierMaskType;
+</programlisting>
+<para>
+AccessibleModifierMaskType is a synonym for AccessibleKeymaskType.
+The defined values for AccessibleModifierMaskType can be found in
+libspi/keymasks.h.
+</para></refsect2>
+<refsect2 id="AccessibleKeyMaskType" role="typedef">
+<title>AccessibleKeyMaskType</title>
+<indexterm zone="AccessibleKeyMaskType"><primary sortas="AccessibleKeyMaskType">AccessibleKeyMaskType</primary></indexterm><programlisting>typedef AccessibleModifierMaskType AccessibleKeyMaskType;
+</programlisting>
+<para>
+AccessibleKeyMaskType is a mask which is a set of key event modifiers
+which is specified in SPI_registerAccessibleKeystrokeListener.</para>
+<para>
+</para></refsect2>
+<refsect2 id="AccessibleKeyEventType" role="typedef">
+<title>AccessibleKeyEventType</title>
+<indexterm zone="AccessibleKeyEventType"><primary sortas="AccessibleKeyEventType">AccessibleKeyEventType</primary></indexterm><programlisting>typedef AccessibleDeviceEventType AccessibleKeyEventType;
+</programlisting>
+<para>
+This is a synonym for AccessibleDeviceEventType</para>
+<para>
+</para></refsect2>
+<refsect2 id="AccessibleKeyListenerSyncType" role="enum">
+<title>enum AccessibleKeyListenerSyncType</title>
+<indexterm zone="AccessibleKeyListenerSyncType"><primary sortas="AccessibleKeyListenerSyncType">AccessibleKeyListenerSyncType</primary></indexterm><programlisting>typedef enum {
+  SPI_KEYLISTENER_NOSYNC = 0,
+  SPI_KEYLISTENER_SYNCHRONOUS = 1,
+  SPI_KEYLISTENER_CANCONSUME = 2,
+  SPI_KEYLISTENER_ALL_WINDOWS = 4
+} AccessibleKeyListenerSyncType;
+</programlisting>
+<para>
+Specified the tyupe of a key listener event.
+Certain of the values above can and should be bitwise-'OR'ed
+together, observing the compatibility limitations specified in the description of
+each value.  For instance, <link linkend="SPI-KEYLISTENER-ALL-WINDOWS--CAPS"><type>SPI_KEYLISTENER_ALL_WINDOWS</type></link> | <link linkend="SPI-KEYLISTENER-CANCONSUME--CAPS"><type>SPI_KEYLISTENER_CANCONSUME</type></link> is
+a commonly used combination which gives the AT complete control over the delivery of matching
+events.  However, such filters should be used sparingly as they may have a negative impact on 
+system performance.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="SPI-KEYLISTENER-NOSYNC--CAPS" role="constant">
+<term><literal>SPI_KEYLISTENER_NOSYNC</literal></term>
+<listitem><simpara> Events may be delivered asynchronously, 
+which means in some cases they may already have been delivered to the 
+application before the AT client receives the notification.  
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-KEYLISTENER-SYNCHRONOUS--CAPS" role="constant">
+<term><literal>SPI_KEYLISTENER_SYNCHRONOUS</literal></term>
+<listitem><simpara> Events are delivered synchronously, before the 
+currently focussed application sees them.  
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-KEYLISTENER-CANCONSUME--CAPS" role="constant">
+<term><literal>SPI_KEYLISTENER_CANCONSUME</literal></term>
+<listitem><simpara> Events may be consumed by the AT client.  Presumes and
+requires <link linkend="SPI-KEYLISTENER-SYNCHRONOUS--CAPS"><type>SPI_KEYLISTENER_SYNCHRONOUS</type></link>, incompatible with <link linkend="SPI-KEYLISTENER-NOSYNC--CAPS"><type>SPI_KEYLISTENER_NOSYNC</type></link>.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-KEYLISTENER-ALL-WINDOWS--CAPS" role="constant">
+<term><literal>SPI_KEYLISTENER_ALL_WINDOWS</literal></term>
+<listitem><simpara> Events are received not from the application toolkit layer, but
+from the device driver or windowing system subsystem; such notifications are 'global' in the 
+sense that they are not broken or defeated by applications that participate poorly
+in the accessibility APIs, or not at all; however because of the intrusive nature of
+such snooping, it can have side-effects on certain older platforms.  If unconditional
+event notifications, even when inaccessible or "broken" applications have focus, are not
+required, it may be best to avoid this enum value/flag.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleKeystroke" role="typedef">
+<title>AccessibleKeystroke</title>
+<indexterm zone="AccessibleKeystroke"><primary sortas="AccessibleKeystroke">AccessibleKeystroke</primary></indexterm><programlisting>typedef AccessibleDeviceEvent AccessibleKeystroke;
+</programlisting>
+<para>
+This is a synonym for AccessibleDeviceEvent.
+</para></refsect2>
+<refsect2 id="SPI-createAccessibleKeySet" role="function">
+<title>SPI_createAccessibleKeySet ()</title>
+<indexterm zone="SPI-createAccessibleKeySet"><primary sortas="SPI_createAccessibleKeySet">SPI_createAccessibleKeySet</primary></indexterm><programlisting><link linkend="AccessibleKeySet">AccessibleKeySet</link> *  SPI_createAccessibleKeySet          (<link linkend="int">int</link> len,
+                                                         const <link linkend="char">char</link> *keysyms,
+                                                         <link linkend="short">short</link> *keycodes,
+                                                         const <link linkend="char">char</link> **keystrings);</programlisting>
+<para>
+Create a new <link linkend="AccessibleKeySet"><type>AccessibleKeySet</type></link> of a specified length.
+A KeySet is used typically to match key event values, and a matches are made
+using the following criteria: a match exists with a key event if all non-null
+i-th members of the keyset match the key event.
+If both keystring and keysym values are NULL, a keycode value match is
+forced, thus the match for keysym=0, keycode=0, keystring=NULL is
+keycode 0.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>len</parameter>&#160;:</term>
+<listitem><simpara> the number of key values in the key set.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>keysyms</parameter>&#160;:</term>
+<listitem><simpara> a UTF-8 string containing symbolic key values to be matched, or NULL if
+          matching is performed against other key values instead.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>keycodes</parameter>&#160;:</term>
+<listitem><simpara> an array of unsigned short values which are the hardware keycodes
+          to be matched, or NULL if the keyset is specified solely by keysyms
+          and/or keystrings.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>keystrings</parameter>&#160;:</term>
+<listitem><simpara> an array of null-terminated character strings which specify key
+            name values to match, or NULL if the keyset is specified solely by
+            keycodes and/or keysyms.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to a newly-created <link linkend="AccessibleKeySet"><type>AccessibleKeySet</type></link>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-freeAccessibleKeySet" role="function">
+<title>SPI_freeAccessibleKeySet ()</title>
+<indexterm zone="SPI-freeAccessibleKeySet"><primary sortas="SPI_freeAccessibleKeySet">SPI_freeAccessibleKeySet</primary></indexterm><programlisting><link linkend="void">void</link>                SPI_freeAccessibleKeySet            (<link linkend="AccessibleKeySet">AccessibleKeySet</link> *keyset);</programlisting>
+<para>
+Release the memory used by an AccessibleKeySet.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>keyset</parameter>&#160;:</term>
+<listitem><simpara> An AccessibleKeyset to free.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-createAccessibleKeystrokeListener" role="function">
+<title>SPI_createAccessibleKeystrokeListener ()</title>
+<indexterm zone="SPI-createAccessibleKeystrokeListener"><primary sortas="SPI_createAccessibleKeystrokeListener">SPI_createAccessibleKeystrokeListener</primary></indexterm><programlisting><link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> * SPI_createAccessibleKeystrokeListener
+                                                        (<link linkend="AccessibleKeystrokeListenerCB">AccessibleKeystrokeListenerCB</link> callback,
+                                                         <link linkend="void">void</link> *user_data);</programlisting>
+<para>
+Create a new <link linkend="AccessibleKeystrokeListener"><type>AccessibleKeystrokeListener</type></link> with a specified callback function.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleKeystrokeListenerCB"><type>AccessibleKeystrokeListenerCB</type></link> callback function, or NULL.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> a pointer to data which will be passed to the callback when invoked.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to a newly-created <link linkend="AccessibleKeystrokeListener"><type>AccessibleKeystrokeListener</type></link>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-registerGlobalEventListener" role="function">
+<title>SPI_registerGlobalEventListener ()</title>
+<indexterm zone="SPI-registerGlobalEventListener"><primary sortas="SPI_registerGlobalEventListener">SPI_registerGlobalEventListener</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          SPI_registerGlobalEventListener     (<link linkend="AccessibleEventListener">AccessibleEventListener</link> *listener,
+                                                         const <link linkend="char">char</link> *eventType);</programlisting>
+<para>
+Legal object event types:
+</para>
+<para>
+   (property change events)
+</para>
+<para>
+           object:property-change
+           object:property-change:accessible-name
+           object:property-change:accessible-description
+           object:property-change:accessible-parent
+           object:property-change:accessible-value
+           object:property-change:accessible-role
+           object:property-change:accessible-table-caption
+           object:property-change:accessible-table-column-description
+           object:property-change:accessible-table-column-header
+           object:property-change:accessible-table-row-description
+           object:property-change:accessible-table-row-header
+           object:property-change:accessible-table-summary
+</para>
+<para>
+   (other object events)
+</para>
+<para>
+           object:state-changed 
+           object:children-changed
+           object:visible-data-changed
+           object:selection-changed
+           object:text-selection-changed
+           object:text-changed
+           object:text-caret-moved
+           object:row-inserted
+           object:row-reordered
+           object:row-deleted
+           object:column-inserted
+           object:column-reordered
+           object:column-deleted
+           object:model-changed
+           object:active-descendant-changed
+</para>
+<para>
+ (window events)
+</para>
+<para>
+           window:minimize
+           window:maximize
+           window:restore
+           window:close
+           window:create
+           window:reparent
+           window:desktop-create
+           window:desktop-destroy
+           window:activate
+           window:deactivate
+           window:raise
+           window:lower
+           window:move
+           window:resize
+           window:shade
+           window:unshade
+           window:restyle
+</para>
+<para>
+ (other events)
+</para>
+<para>
+           focus:
+           mouse:abs
+           mouse:rel
+           mouse:b1p
+           mouse:b1r
+           mouse:b2p
+           mouse:b2r
+           mouse:b3p
+           mouse:b3r
+</para>
+<para>
+NOTE: this string may be UTF-8, but should not contain byte value 56
+           (ascii ':'), except as a delimiter, since non-UTF-8 string
+           delimiting functions are used internally.
+           In general, listening to
+           toolkit-specific events is not recommended.
+</para>
+<para>
+Add an in-process callback function to an existing AccessibleEventListener.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> the <link linkend="AccessibleEventListener"><type>AccessibleEventListener</type></link> to be registered against an
+           event type.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>eventType</parameter>&#160;:</term>
+<listitem><simpara> a character string indicating the type of events for which
+           notification is requested.  Format is
+           EventClass:major_type:minor_type:detail
+           where all subfields other than EventClass are optional.
+           EventClasses include "object", "window", "mouse",
+           and toolkit events (e.g. "Gtk", "AWT").
+           Examples: "focus:", "Gtk:GtkWidget:button-press-event".
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-deregisterGlobalEventListener" role="function">
+<title>SPI_deregisterGlobalEventListener ()</title>
+<indexterm zone="SPI-deregisterGlobalEventListener"><primary sortas="SPI_deregisterGlobalEventListener">SPI_deregisterGlobalEventListener</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          SPI_deregisterGlobalEventListener   (<link linkend="AccessibleEventListener">AccessibleEventListener</link> *listener,
+                                                         const <link linkend="char">char</link> *eventType);</programlisting>
+<para>
+deregisters an AccessibleEventListener from the registry, for a specific
+            event type.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> the <link linkend="AccessibleEventListener"><type>AccessibleEventListener</type></link> registered against an event type.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>eventType</parameter>&#160;:</term>
+<listitem><simpara> a string specifying the event type for which this
+            listener is to be deregistered.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-deregisterGlobalEventListenerAll" role="function">
+<title>SPI_deregisterGlobalEventListenerAll ()</title>
+<indexterm zone="SPI-deregisterGlobalEventListenerAll"><primary sortas="SPI_deregisterGlobalEventListenerAll">SPI_deregisterGlobalEventListenerAll</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          SPI_deregisterGlobalEventListenerAll
+                                                        (<link linkend="AccessibleEventListener">AccessibleEventListener</link> *listener);</programlisting>
+<para>
+deregisters an AccessibleEventListener from the registry, for all
+           event types it may be listening to. Use
+           AccessibleEventListener_unref to release the
+           listener reference.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> the <link linkend="AccessibleEventListener"><type>AccessibleEventListener</type></link> to be registered against
+           an event type.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-registerAccessibleKeystrokeListener" role="function">
+<title>SPI_registerAccessibleKeystrokeListener ()</title>
+<indexterm zone="SPI-registerAccessibleKeystrokeListener"><primary sortas="SPI_registerAccessibleKeystrokeListener">SPI_registerAccessibleKeystrokeListener</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          SPI_registerAccessibleKeystrokeListener
+                                                        (<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> *listener,
+                                                         <link linkend="AccessibleKeySet">AccessibleKeySet</link> *keys,
+                                                         <link linkend="AccessibleKeyMaskType">AccessibleKeyMaskType</link> modmask,
+                                                         <link linkend="AccessibleKeyEventMask">AccessibleKeyEventMask</link> eventmask,
+                                                         <link linkend="AccessibleKeyListenerSyncType">AccessibleKeyListenerSyncType</link> sync_type);</programlisting>
+<para>
+Register a listener for keystroke events, either pre-emptively for
+            all windows (SPI_KEYLISTENER_ALL_WINDOWS),
+            non-preemptively (SPI_KEYLISTENER_NOSYNC), or
+            pre-emptively at the toolkit level (SPI_KEYLISTENER_CANCONSUME).
+            If ALL_WINDOWS or CANCONSUME are used, the event is consumed
+            upon receipt if one of <parameter>listener</parameter>'s callbacks returns <link linkend="TRUE--CAPS"><type>TRUE</type></link>.
+            ( Other sync_type values may be available in the future )</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara>  a pointer to the <link linkend="AccessibleKeystrokeListener"><type>AccessibleKeystrokeListener</type></link> for which
+            keystroke events are requested.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>keys</parameter>&#160;:</term>
+<listitem><simpara>      a pointer to the <link linkend="AccessibleKeySet"><type>AccessibleKeySet</type></link> indicating which
+            keystroke events are requested, or <link linkend="SPI-KEYSET-ALL-KEYS--CAPS"><type>SPI_KEYSET_ALL_KEYS</type></link>
+            to indicate that all keycodes and keyvals for the specified
+            modifier set are to be included.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>modmask</parameter>&#160;:</term>
+<listitem><simpara>   an <link linkend="AccessibleKeyMaskType"><type>AccessibleKeyMaskType</type></link> mask indicating which
+            key event modifiers must be set in combination with <parameter>keys</parameter>,
+            events will only be reported for key events for which all
+            modifiers in <parameter>modmask</parameter> are set.  If you wish to listen for
+            events with multiple modifier combinations you must call
+            <link linkend="registerAccessibleKeystrokeListener"><function>registerAccessibleKeystrokeListener()</function></link> once for each combination.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>eventmask</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleKeyMaskType"><type>AccessibleKeyMaskType</type></link> mask indicating which
+            types of key events are requested (<link linkend="SPI-KEY-PRESSED--CAPS"><type>SPI_KEY_PRESSED</type></link>, etc.).
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>sync_type</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="AccessibleKeyListenerSyncType"><type>AccessibleKeyListenerSyncType</type></link> parameter indicating
+            the behavior of the notification/listener transaction.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-deregisterAccessibleKeystrokeListener" role="function">
+<title>SPI_deregisterAccessibleKeystrokeListener ()</title>
+<indexterm zone="SPI-deregisterAccessibleKeystrokeListener"><primary sortas="SPI_deregisterAccessibleKeystrokeListener">SPI_deregisterAccessibleKeystrokeListener</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          SPI_deregisterAccessibleKeystrokeListener
+                                                        (<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> *listener,
+                                                         <link linkend="AccessibleKeyMaskType">AccessibleKeyMaskType</link> modmask);</programlisting>
+<para>
+Removes a keystroke event listener from the registry's listener queue,
+           ceasing notification of events with modifiers matching <parameter>modmask</parameter>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleKeystrokeListener"><type>AccessibleKeystrokeListener</type></link> for which
+           keystroke events are requested.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>modmask</parameter>&#160;:</term>
+<listitem><simpara>  the key modifier mask for which this listener is to be
+           'deregistered' (of type <link linkend="AccessibleeyMaskType"><type>AccessibleeyMaskType</type></link>).
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleKeystrokeListener-unref" role="function">
+<title>AccessibleKeystrokeListener_unref ()</title>
+<indexterm zone="AccessibleKeystrokeListener-unref"><primary sortas="AccessibleKeystrokeListener_unref">AccessibleKeystrokeListener_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleKeystrokeListener_unref   (<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> *listener);</programlisting>
+<para>
+Decrements an <link linkend="AccessibleKeystrokeListener"><type>AccessibleKeystrokeListener</type></link>'s reference count.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleKeystrokeListener"><type>AccessibleKeystrokeListener</type></link> being operated on.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleKeystrokeListener-removeCallback" role="function">
+<title>AccessibleKeystrokeListener_removeCallback ()</title>
+<indexterm zone="AccessibleKeystrokeListener-removeCallback"><primary sortas="AccessibleKeystrokeListener_removeCallback">AccessibleKeystrokeListener_removeCallback</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleKeystrokeListener_removeCallback
+                                                        (<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> *listener,
+                                                         <link linkend="AccessibleKeystrokeListenerCB">AccessibleKeystrokeListenerCB</link> callback);</programlisting>
+<para>
+Remove an in-process callback function from an existing <link linkend="AccessibleKeystrokeListener"><type>AccessibleKeystrokeListener</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> the <link linkend="AccessibleKeystrokeListener"><type>AccessibleKeystrokeListener</type></link> instance to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleKeystrokeListenerCB"><type>AccessibleKeystrokeListenerCB</type></link> function pointer.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleKeystrokeListener-addCallback" role="function">
+<title>AccessibleKeystrokeListener_addCallback ()</title>
+<indexterm zone="AccessibleKeystrokeListener-addCallback"><primary sortas="AccessibleKeystrokeListener_addCallback">AccessibleKeystrokeListener_addCallback</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleKeystrokeListener_addCallback
+                                                        (<link linkend="AccessibleKeystrokeListener">AccessibleKeystrokeListener</link> *listener,
+                                                         <link linkend="AccessibleKeystrokeListenerCB">AccessibleKeystrokeListenerCB</link> callback,
+                                                         <link linkend="void">void</link> *user_data);</programlisting>
+<para>
+Add an in-process callback function to an existing <link linkend="AccessibleKeystrokeListener"><type>AccessibleKeystrokeListener</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> the <link linkend="AccessibleKeystrokeListener"><type>AccessibleKeystrokeListener</type></link> instance to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleKeystrokeListenerCB"><type>AccessibleKeystrokeListenerCB</type></link> function pointer.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> a pointer to data which will be passed to the callback when invoked.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-generateKeyboardEvent" role="function">
+<title>SPI_generateKeyboardEvent ()</title>
+<indexterm zone="SPI-generateKeyboardEvent"><primary sortas="SPI_generateKeyboardEvent">SPI_generateKeyboardEvent</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          SPI_generateKeyboardEvent           (long <link linkend="int">int</link> keyval,
+                                                         <link linkend="char">char</link> *keystring,
+                                                         <link linkend="AccessibleKeySynthType">AccessibleKeySynthType</link> synth_type);</programlisting>
+<para>
+Synthesize a keyboard event (as if a hardware keyboard event occurred in the
+current UI context).</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>keyval</parameter>&#160;:</term>
+<listitem><simpara> a long integer indicating the keycode or keysym of the key event
+          being synthesized.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>keystring</parameter>&#160;:</term>
+<listitem><simpara> an (optional) UTF-8 string which, if <parameter>keyval</parameter> is NULL,
+          indicates a 'composed' keyboard input string which is 
+          being synthesized; this type of keyboard event synthesis does
+          not emulate hardware keypresses but injects the string 
+          as though a composing input method (such as XIM) were used.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>synth_type</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="AccessibleKeySynthType"><type>AccessibleKeySynthType</type></link> flag indicating whether <parameter>keyval</parameter>
+          is to be interpreted as a keysym rather than a keycode
+          (CSPI_KEYSYM), or whether to synthesize
+          SPI_KEY_PRESS, SPI_KEY_RELEASE, or both (SPI_KEY_PRESSRELEASE).
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-generateMouseEvent" role="function">
+<title>SPI_generateMouseEvent ()</title>
+<indexterm zone="SPI-generateMouseEvent"><primary sortas="SPI_generateMouseEvent">SPI_generateMouseEvent</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          SPI_generateMouseEvent              (long <link linkend="int">int</link> x,
+                                                         long <link linkend="int">int</link> y,
+                                                         <link linkend="char">char</link> *name);</programlisting>
+<para>
+Synthesize a mouse event at a specific screen coordinate.
+Most AT clients should use the <link linkend="AccessibleAction"><type>AccessibleAction</type></link> interface when
+tempted to generate mouse events, rather than this method.
+Event names: b1p = button 1 press; b2r = button 2 release;
+             b3c = button 3 click; b2d = button 2 double-click;
+             abs = absolute motion; rel = relative motion.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>x</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="long"><type>long</type></link> indicating the screen x coordinate of the mouse event.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>y</parameter>&#160;:</term>
+<listitem><simpara> a <link linkend="long"><type>long</type></link> indicating the screen y coordinate of the mouse event.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>name</parameter>&#160;:</term>
+<listitem><simpara> a string indicating which mouse event to be synthesized
+       (e.g. "b1p", "b1c", "b2r", "rel", "abs").
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleDeviceEvent" role="struct">
+<title>AccessibleDeviceEvent</title>
+<indexterm zone="AccessibleDeviceEvent"><primary sortas="AccessibleDeviceEvent">AccessibleDeviceEvent</primary></indexterm><programlisting>typedef struct {
+  long                   keyID;
+  short                  keycode;
+  char *                 keystring;
+  long                   timestamp;
+  AccessibleDeviceEventType type;
+  unsigned short         modifiers;
+  SPIBoolean             is_text;	
+} AccessibleDeviceEvent;
+</programlisting>
+<para>
+A structure encapsulating information relevant to a device event notification.</para>
+<para>
+AccessibleDeviceEvent is a struct which encapsulates a device event.
+</para><variablelist role="struct">
+<varlistentry>
+<term><link linkend="char">char</link>&#160;*<structfield>keystring</structfield>;</term>
+<listitem><simpara> A symbolic name for the key or switch, or, if is_text is true, a string approximating the
+inserted text characters which would result from this event, if a text entry field has keyboard focus.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="AccessibleDeviceEventType">AccessibleDeviceEventType</link>&#160;<structfield>type</structfield>;</term>
+<listitem><simpara> The <link linkend="AccessibleDeviceEventType"><type>AccessibleDeviceEventType</type></link> identifying the specific type of event.
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term>unsigned&#160;<link linkend="short">short</link>&#160;<structfield>modifiers</structfield>;</term>
+<listitem><simpara>
+</simpara></listitem>
+</varlistentry>
+<varlistentry>
+<term><link linkend="SPIBoolean">SPIBoolean</link>&#160;<structfield>is_text</structfield>;</term>
+<listitem><simpara> A boolean value indicating whether the event represents 'printable' text (i.e. whether it
+changes the current insertion buffer of a focussed text entry component or not).  Whitespace
+is considered "printable" in this context, since it typically inserts characters into the buffer.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleDeviceEventMask" role="typedef">
+<title>AccessibleDeviceEventMask</title>
+<indexterm zone="AccessibleDeviceEventMask"><primary sortas="AccessibleDeviceEventMask">AccessibleDeviceEventMask</primary></indexterm><programlisting>typedef unsigned long AccessibleDeviceEventMask;
+</programlisting>
+<para>
+AccessibleDeviceEventMask is a set of types of key events. It is used
+in SPI_registerDeviceEventListener to specify the events to be listener for.
+</para></refsect2>
+<refsect2 id="AccessibleDeviceEventType" role="enum">
+<title>enum AccessibleDeviceEventType</title>
+<indexterm zone="AccessibleDeviceEventType"><primary sortas="AccessibleDeviceEventType">AccessibleDeviceEventType</primary></indexterm><programlisting>typedef enum {
+  SPI_KEY_PRESSED  = 1&lt;&lt;0,
+  SPI_KEY_RELEASED = 1&lt;&lt;1,
+  SPI_BUTTON_PRESSED = 1&lt;&lt;2,
+  SPI_BUTTON_RELEASED = 1&lt;&lt;3
+} AccessibleDeviceEventType;
+</programlisting>
+<para>
+The type of an AccessibleDeviceEvent.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="SPI-KEY-PRESSED--CAPS" role="constant">
+<term><literal>SPI_KEY_PRESSED</literal></term>
+<listitem><simpara> A device key has been pressed.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-KEY-RELEASED--CAPS" role="constant">
+<term><literal>SPI_KEY_RELEASED</literal></term>
+<listitem><simpara> A device key has been released.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-BUTTON-PRESSED--CAPS" role="constant">
+<term><literal>SPI_BUTTON_PRESSED</literal></term>
+<listitem><simpara> A device button or switch (other than a keyboard key) 
+has been pressed.
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-BUTTON-RELEASED--CAPS" role="constant">
+<term><literal>SPI_BUTTON_RELEASED</literal></term>
+<listitem><simpara> A device button or switch has been released.
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleDeviceListenerCB" role="function">
+<title>AccessibleDeviceListenerCB ()</title>
+<indexterm zone="AccessibleDeviceListenerCB"><primary sortas="AccessibleDeviceListenerCB">AccessibleDeviceListenerCB</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          (*AccessibleDeviceListenerCB)       (const <link linkend="AccessibleDeviceEvent">AccessibleDeviceEvent</link> *stroke,
+                                                         <link linkend="void">void</link> *user_data);</programlisting>
+<para>
+A callback function prototype via which clients receive device event notifications.</para>
+<para>
+This is a function which is specified when creating a DeviceListener.
+It is called when an event being listened for occurs.
+</para><variablelist role="params">
+<varlistentry><term><parameter>stroke</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="AccessibleDeviceEvent"><type>AccessibleDeviceEvent</type></link> for which notification is being received.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> Data which is passed to the client each time this callback is notified.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><literal>TRUE</literal></link> if the client wishes to consume/preempt the event, preventing it from being
+relayed to the currently focussed application, <link linkend="FALSE--CAPS"><literal>FALSE</literal></link> if the event delivery should proceed as normal.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-createAccessibleDeviceListener" role="function">
+<title>SPI_createAccessibleDeviceListener ()</title>
+<indexterm zone="SPI-createAccessibleDeviceListener"><primary sortas="SPI_createAccessibleDeviceListener">SPI_createAccessibleDeviceListener</primary></indexterm><programlisting><link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> * SPI_createAccessibleDeviceListener
+                                                        (<link linkend="AccessibleDeviceListenerCB">AccessibleDeviceListenerCB</link> callback,
+                                                         <link linkend="void">void</link> *user_data);</programlisting>
+<para>
+Create a new <link linkend="AccessibleDeviceListener"><type>AccessibleDeviceListener</type></link> with a specified callback function.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleDeviceListenerCB"><type>AccessibleDeviceListenerCB</type></link> callback function, or NULL.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> a pointer to data which will be passed to the callback when invoked.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a pointer to a newly-created <link linkend="AccessibleDeviceListener"><type>AccessibleDeviceListener</type></link>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-registerDeviceEventListener" role="function">
+<title>SPI_registerDeviceEventListener ()</title>
+<indexterm zone="SPI-registerDeviceEventListener"><primary sortas="SPI_registerDeviceEventListener">SPI_registerDeviceEventListener</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          SPI_registerDeviceEventListener     (<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> *listener,
+                                                         <link linkend="AccessibleDeviceEventMask">AccessibleDeviceEventMask</link> eventmask,
+                                                         <link linkend="void">void</link> *filter);</programlisting>
+<para>
+Register a listener for device events, for instance button events.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara>  a pointer to the <link linkend="AccessibleDeviceListener"><type>AccessibleDeviceListener</type></link> which requests
+            the events.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>eventmask</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleDeviceEventMask"><type>AccessibleDeviceEventMask</type></link> mask indicating which
+            types of key events are requested (<link linkend="SPI-KEY-PRESSED--CAPS"><type>SPI_KEY_PRESSED</type></link>, etc.).
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>filter</parameter>&#160;:</term>
+<listitem><simpara> Unused parameter.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="SPI-deregisterDeviceEventListener" role="function">
+<title>SPI_deregisterDeviceEventListener ()</title>
+<indexterm zone="SPI-deregisterDeviceEventListener"><primary sortas="SPI_deregisterDeviceEventListener">SPI_deregisterDeviceEventListener</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          SPI_deregisterDeviceEventListener   (<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> *listener,
+                                                         <link linkend="void">void</link> *filter);</programlisting>
+<para>
+Removes a device event listener from the registry's listener queue,
+           ceasing notification of events of the specified type.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleDeviceListener"><type>AccessibleDeviceListener</type></link> for which
+           device events are requested.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>filter</parameter>&#160;:</term>
+<listitem><simpara> Unused parameter.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleDeviceListener-addCallback" role="function">
+<title>AccessibleDeviceListener_addCallback ()</title>
+<indexterm zone="AccessibleDeviceListener-addCallback"><primary sortas="AccessibleDeviceListener_addCallback">AccessibleDeviceListener_addCallback</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleDeviceListener_addCallback
+                                                        (<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> *listener,
+                                                         <link linkend="AccessibleDeviceListenerCB">AccessibleDeviceListenerCB</link> callback,
+                                                         <link linkend="void">void</link> *user_data);</programlisting>
+<para>
+Add an in-process callback function to an existing <link linkend="AccessibleDeviceListener"><type>AccessibleDeviceListener</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> the <link linkend="AccessibleDeviceListener"><type>AccessibleDeviceListener</type></link> instance to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleDeviceListenerCB"><type>AccessibleDeviceListenerCB</type></link> function pointer.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>user_data</parameter>&#160;:</term>
+<listitem><simpara> a pointer to data which will be passed to the callback when invoked.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleDeviceListener-removeCallback" role="function">
+<title>AccessibleDeviceListener_removeCallback ()</title>
+<indexterm zone="AccessibleDeviceListener-removeCallback"><primary sortas="AccessibleDeviceListener_removeCallback">AccessibleDeviceListener_removeCallback</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleDeviceListener_removeCallback
+                                                        (<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> *listener,
+                                                         <link linkend="AccessibleDeviceListenerCB">AccessibleDeviceListenerCB</link> callback);</programlisting>
+<para>
+Remove an in-process callback function from an existing <link linkend="AccessibleDeviceListener"><type>AccessibleDeviceListener</type></link>.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> the <link linkend="AccessibleDeviceListener"><type>AccessibleDeviceListener</type></link> instance to modify.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>callback</parameter>&#160;:</term>
+<listitem><simpara> an <link linkend="AccessibleDeviceListenerCB"><type>AccessibleDeviceListenerCB</type></link> function pointer.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, otherwise <link linkend="FALSE--CAPS"><type>FALSE</type></link>.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleDeviceListener-unref" role="function">
+<title>AccessibleDeviceListener_unref ()</title>
+<indexterm zone="AccessibleDeviceListener-unref"><primary sortas="AccessibleDeviceListener_unref">AccessibleDeviceListener_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleDeviceListener_unref      (<link linkend="AccessibleDeviceListener">AccessibleDeviceListener</link> *listener);</programlisting>
+<para>
+Decrements an <link linkend="AccessibleDeviceListener"><type>AccessibleDeviceListener</type></link>'s reference count.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>listener</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleDeviceListener"><type>AccessibleDeviceListener</type></link> being operated on.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

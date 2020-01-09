@@ -1,0 +1,129 @@
+<refentry id="at-spi-cspi-AccessibleDocument-Interface">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-AccessibleDocument-Interface.top_of_page">AccessibleDocument Interface</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>AccessibleDocument Interface</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-AccessibleDocument-Interface.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+<link linkend="void">void</link>                <link linkend="AccessibleDocument-ref">AccessibleDocument_ref</link>              (<link linkend="AccessibleDocument">AccessibleDocument</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleDocument-unref">AccessibleDocument_unref</link>            (<link linkend="AccessibleDocument">AccessibleDocument</link> *obj);
+<link linkend="char">char</link> *              <link linkend="AccessibleDocument-getAttributeValue">AccessibleDocument_getAttributeValue</link>
+                                                        (<link linkend="AccessibleDocument">AccessibleDocument</link> *obj,
+                                                         <link linkend="char">char</link> *attribute);
+<link linkend="AccessibleAttributeSet">AccessibleAttributeSet</link> * <link linkend="AccessibleDocument-getAttributes">AccessibleDocument_getAttributes</link>
+                                                        (<link linkend="AccessibleDocument">AccessibleDocument</link> *obj);
+<link linkend="char">char</link> *              <link linkend="AccessibleDocument-getLocale">AccessibleDocument_getLocale</link>        (<link linkend="AccessibleDocument">AccessibleDocument</link> *obj);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-AccessibleDocument-Interface.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-AccessibleDocument-Interface.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="AccessibleDocument-ref" role="function">
+<title>AccessibleDocument_ref ()</title>
+<indexterm zone="AccessibleDocument-ref"><primary sortas="AccessibleDocument_ref">AccessibleDocument_ref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleDocument_ref              (<link linkend="AccessibleDocument">AccessibleDocument</link> *obj);</programlisting>
+<para>
+Increment the reference count for an <link linkend="AccessibleDocument"><type>AccessibleDocument</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleDocument"><type>AccessibleDocument</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleDocument-unref" role="function">
+<title>AccessibleDocument_unref ()</title>
+<indexterm zone="AccessibleDocument-unref"><primary sortas="AccessibleDocument_unref">AccessibleDocument_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleDocument_unref            (<link linkend="AccessibleDocument">AccessibleDocument</link> *obj);</programlisting>
+<para>
+Decrement the reference count for an <link linkend="AccessibleDocument"><type>AccessibleDocument</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleDocument-getAttributeValue" role="function">
+<title>AccessibleDocument_getAttributeValue ()</title>
+<indexterm zone="AccessibleDocument-getAttributeValue"><primary sortas="AccessibleDocument_getAttributeValue">AccessibleDocument_getAttributeValue</primary></indexterm><programlisting><link linkend="char">char</link> *              AccessibleDocument_getAttributeValue
+                                                        (<link linkend="AccessibleDocument">AccessibleDocument</link> *obj,
+                                                         <link linkend="char">char</link> *attribute);</programlisting>
+<para>
+Gets the value of a single attribute, if specified for the document as a whole.
+</para>
+<para>
+(name-value pair) being queried.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>attribute</parameter>&#160;:</term>
+<listitem><simpara> a string indicating the name of a specific attribute 
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara>a string corresponding to the value of the specified attribute, or
+an empty string if the attribute is unspecified for the object.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleDocument-getAttributes" role="function">
+<title>AccessibleDocument_getAttributes ()</title>
+<indexterm zone="AccessibleDocument-getAttributes"><primary sortas="AccessibleDocument_getAttributes">AccessibleDocument_getAttributes</primary></indexterm><programlisting><link linkend="AccessibleAttributeSet">AccessibleAttributeSet</link> * AccessibleDocument_getAttributes
+                                                        (<link linkend="AccessibleDocument">AccessibleDocument</link> *obj);</programlisting>
+<para>
+Gets all attributes specified for a document as a whole.  
+</para>
+<para>
+For attributes which change within 
+the document content, see Accessibility::Text::getAttributes instead.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara>an ::AttributeSet containing the attributes of the document, 
+as name-value pairs.
+
+Since AT-SPI 1.8.0
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleDocument-getLocale" role="function">
+<title>AccessibleDocument_getLocale ()</title>
+<indexterm zone="AccessibleDocument-getLocale"><primary sortas="AccessibleDocument_getLocale">AccessibleDocument_getLocale</primary></indexterm><programlisting><link linkend="char">char</link> *              AccessibleDocument_getLocale        (<link linkend="AccessibleDocument">AccessibleDocument</link> *obj);</programlisting>
+<para>
+Gets the locale associated with the document's content.
+e.g. the locale for LOCALE_TYPE_MESSAGES.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="Accessible"><type>Accessible</type></link> object on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a string compliant with the POSIX standard for locale description.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

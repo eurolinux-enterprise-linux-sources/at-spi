@@ -1,0 +1,184 @@
+<refentry id="at-spi-cspi-AccessibleImage-Interface">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-AccessibleImage-Interface.top_of_page">AccessibleImage Interface</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>AccessibleImage Interface</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-AccessibleImage-Interface.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+<link linkend="void">void</link>                <link linkend="AccessibleImage-ref">AccessibleImage_ref</link>                 (<link linkend="AccessibleImage">AccessibleImage</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleImage-unref">AccessibleImage_unref</link>               (<link linkend="AccessibleImage">AccessibleImage</link> *obj);
+<link linkend="char">char</link> *              <link linkend="AccessibleImage-getImageDescription">AccessibleImage_getImageDescription</link> (<link linkend="AccessibleImage">AccessibleImage</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleImage-getImageSize">AccessibleImage_getImageSize</link>        (<link linkend="AccessibleImage">AccessibleImage</link> *obj,
+                                                         long <link linkend="int">int</link> *width,
+                                                         long <link linkend="int">int</link> *height);
+<link linkend="void">void</link>                <link linkend="AccessibleImage-getImagePosition">AccessibleImage_getImagePosition</link>    (<link linkend="AccessibleImage">AccessibleImage</link> *obj,
+                                                         long <link linkend="int">int</link> *x,
+                                                         long <link linkend="int">int</link> *y,
+                                                         <link linkend="AccessibleCoordType">AccessibleCoordType</link> ctype);
+<link linkend="void">void</link>                <link linkend="AccessibleImage-getImageExtents">AccessibleImage_getImageExtents</link>     (<link linkend="AccessibleImage">AccessibleImage</link> *obj,
+                                                         long <link linkend="int">int</link> *x,
+                                                         long <link linkend="int">int</link> *y,
+                                                         long <link linkend="int">int</link> *width,
+                                                         long <link linkend="int">int</link> *height,
+                                                         <link linkend="AccessibleCoordType">AccessibleCoordType</link> ctype);
+<link linkend="char">char</link> *              <link linkend="AccessibleImage-getImageLocale">AccessibleImage_getImageLocale</link>      (<link linkend="AccessibleImage">AccessibleImage</link> *obj);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-AccessibleImage-Interface.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-AccessibleImage-Interface.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="AccessibleImage-ref" role="function">
+<title>AccessibleImage_ref ()</title>
+<indexterm zone="AccessibleImage-ref"><primary sortas="AccessibleImage_ref">AccessibleImage_ref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleImage_ref                 (<link linkend="AccessibleImage">AccessibleImage</link> *obj);</programlisting>
+<para>
+Increment the reference count for an <link linkend="AccessibleImage"><type>AccessibleImage</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleImage"><type>AccessibleImage</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleImage-unref" role="function">
+<title>AccessibleImage_unref ()</title>
+<indexterm zone="AccessibleImage-unref"><primary sortas="AccessibleImage_unref">AccessibleImage_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleImage_unref               (<link linkend="AccessibleImage">AccessibleImage</link> *obj);</programlisting>
+<para>
+Decrement the reference count for an <link linkend="AccessibleImage"><type>AccessibleImage</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleImage"><type>AccessibleImage</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleImage-getImageDescription" role="function">
+<title>AccessibleImage_getImageDescription ()</title>
+<indexterm zone="AccessibleImage-getImageDescription"><primary sortas="AccessibleImage_getImageDescription">AccessibleImage_getImageDescription</primary></indexterm><programlisting><link linkend="char">char</link> *              AccessibleImage_getImageDescription (<link linkend="AccessibleImage">AccessibleImage</link> *obj);</programlisting>
+<para>
+Get the description of the image displayed in an <link linkend="AccessibleImage"><type>AccessibleImage</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleImage"><type>AccessibleImage</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> a UTF-8 string describing the image.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleImage-getImageSize" role="function">
+<title>AccessibleImage_getImageSize ()</title>
+<indexterm zone="AccessibleImage-getImageSize"><primary sortas="AccessibleImage_getImageSize">AccessibleImage_getImageSize</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleImage_getImageSize        (<link linkend="AccessibleImage">AccessibleImage</link> *obj,
+                                                         long <link linkend="int">int</link> *width,
+                                                         long <link linkend="int">int</link> *height);</programlisting>
+<para>
+Get the size of the image displayed in a specified <link linkend="AccessibleImage"><type>AccessibleImage</type></link> object.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleImage"><type>AccessibleImage</type></link> to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>width</parameter>&#160;:</term>
+<listitem><simpara> a pointer to a <link linkend="long"><type>long</type></link> into which the x extents (width) will be returned.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>height</parameter>&#160;:</term>
+<listitem><simpara> a pointer to a <link linkend="long"><type>long</type></link> into which the y extents (height) will be returned.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleImage-getImagePosition" role="function">
+<title>AccessibleImage_getImagePosition ()</title>
+<indexterm zone="AccessibleImage-getImagePosition"><primary sortas="AccessibleImage_getImagePosition">AccessibleImage_getImagePosition</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleImage_getImagePosition    (<link linkend="AccessibleImage">AccessibleImage</link> *obj,
+                                                         long <link linkend="int">int</link> *x,
+                                                         long <link linkend="int">int</link> *y,
+                                                         <link linkend="AccessibleCoordType">AccessibleCoordType</link> ctype);</programlisting>
+<para>
+Get the minimum x and y coordinates of the image displayed in a
+        specified <link linkend="AccessibleImage"><type>AccessibleImage</type></link> implementor.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleImage"><type>AccessibleImage</type></link> implementor to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>x</parameter>&#160;:</term>
+<listitem><simpara> a pointer to a <link linkend="long"><type>long</type></link> into which the minimum x coordinate will be returned.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>y</parameter>&#160;:</term>
+<listitem><simpara> a pointer to a <link linkend="long"><type>long</type></link> into which the minimum y coordinate will be returned.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>ctype</parameter>&#160;:</term>
+<listitem><simpara> the desired coordinate system into which to return the results,
+        (e.g. SPI_COORD_TYPE_WINDOW, SPI_COORD_TYPE_SCREEN).
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleImage-getImageExtents" role="function">
+<title>AccessibleImage_getImageExtents ()</title>
+<indexterm zone="AccessibleImage-getImageExtents"><primary sortas="AccessibleImage_getImageExtents">AccessibleImage_getImageExtents</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleImage_getImageExtents     (<link linkend="AccessibleImage">AccessibleImage</link> *obj,
+                                                         long <link linkend="int">int</link> *x,
+                                                         long <link linkend="int">int</link> *y,
+                                                         long <link linkend="int">int</link> *width,
+                                                         long <link linkend="int">int</link> *height,
+                                                         <link linkend="AccessibleCoordType">AccessibleCoordType</link> ctype);</programlisting>
+<para>
+Get the bounding box of the image displayed in a
+        specified <link linkend="AccessibleImage"><type>AccessibleImage</type></link> implementor.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleImage"><type>AccessibleImage</type></link> implementor to query.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>x</parameter>&#160;:</term>
+<listitem><simpara> a pointer to a <link linkend="long"><type>long</type></link> into which the minimum x coordinate will be returned.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>y</parameter>&#160;:</term>
+<listitem><simpara> a pointer to a <link linkend="long"><type>long</type></link> into which the minimum y coordinate will be returned.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>width</parameter>&#160;:</term>
+<listitem><simpara> a pointer to a <link linkend="long"><type>long</type></link> into which the image x extent will be returned.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>height</parameter>&#160;:</term>
+<listitem><simpara> a pointer to a <link linkend="long"><type>long</type></link> into which the image y extent will be returned.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>ctype</parameter>&#160;:</term>
+<listitem><simpara> the desired coordinate system into which to return the results,
+        (e.g. SPI_COORD_TYPE_WINDOW, SPI_COORD_TYPE_SCREEN).
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleImage-getImageLocale" role="function">
+<title>AccessibleImage_getImageLocale ()</title>
+<indexterm zone="AccessibleImage-getImageLocale"><primary sortas="AccessibleImage_getImageLocale">AccessibleImage_getImageLocale</primary></indexterm><programlisting><link linkend="char">char</link> *              AccessibleImage_getImageLocale      (<link linkend="AccessibleImage">AccessibleImage</link> *obj);</programlisting>
+<para>
+Get the locale associated with an image and its textual representation.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> The <link linkend="AccessibleImage"><type>AccessibleImage</type></link> being queried.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> A POSIX LC_MESSAGES-style Locale value for image description and text.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>

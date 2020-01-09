@@ -1,0 +1,263 @@
+<refentry id="at-spi-cspi-AccessibleStreamableContent-Interface">
+<refmeta>
+<refentrytitle role="top_of_page" id="at-spi-cspi-AccessibleStreamableContent-Interface.top_of_page">AccessibleStreamableContent Interface</refentrytitle>
+<manvolnum>3</manvolnum>
+<refmiscinfo>AT-SPI-CSPI Library</refmiscinfo>
+</refmeta>
+
+<refnamediv>
+<refname>AccessibleStreamableContent Interface</refname>
+<refpurpose></refpurpose>
+</refnamediv>
+
+<refsynopsisdiv id="at-spi-cspi-AccessibleStreamableContent-Interface.synopsis" role="synopsis">
+<title role="synopsis.title">Synopsis</title>
+
+<synopsis>
+enum                <link linkend="AccessibleStreamableContentSeekType">AccessibleStreamableContentSeekType</link>;
+<link linkend="void">void</link>                <link linkend="AccessibleStreamableContent-freeContentTypesList">AccessibleStreamableContent_freeContentTypesList</link>
+                                                        (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj,
+                                                         <link linkend="char">char</link> **content_types);
+<link linkend="void">void</link>                <link linkend="AccessibleStreamableContent-ref">AccessibleStreamableContent_ref</link>     (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj);
+<link linkend="void">void</link>                <link linkend="AccessibleStreamableContent-unref">AccessibleStreamableContent_unref</link>   (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj);
+<link linkend="char">char</link> **             <link linkend="AccessibleStreamableContent-getContentTypes">AccessibleStreamableContent_getContentTypes</link>
+                                                        (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleStreamableContent-open">AccessibleStreamableContent_open</link>    (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj,
+                                                         const <link linkend="char">char</link> *content_type);
+<link linkend="long">long</link>                <link linkend="AccessibleStreamableContent-seek">AccessibleStreamableContent_seek</link>    (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj,
+                                                         long <link linkend="int">int</link> offset,
+                                                         <link linkend="AccessibleStreamableContentSeekType">AccessibleStreamableContentSeekType</link> seek_type);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleStreamableContent-read">AccessibleStreamableContent_read</link>    (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj,
+                                                         <link linkend="void">void</link> *buff,
+                                                         long <link linkend="int">int</link> nbytes,
+                                                         unsigned <link linkend="int">int</link> read_type);
+<link linkend="SPIBoolean">SPIBoolean</link>          <link linkend="AccessibleStreamableContent-close">AccessibleStreamableContent_close</link>   (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj);
+</synopsis>
+</refsynopsisdiv>
+
+
+
+
+
+
+
+
+
+<refsect1 id="at-spi-cspi-AccessibleStreamableContent-Interface.description" role="desc">
+<title role="desc.title">Description</title>
+<para>
+</para>
+</refsect1>
+
+<refsect1 id="at-spi-cspi-AccessibleStreamableContent-Interface.details" role="details">
+<title role="details.title">Details</title>
+<refsect2 id="AccessibleStreamableContentSeekType" role="enum">
+<title>enum AccessibleStreamableContentSeekType</title>
+<indexterm zone="AccessibleStreamableContentSeekType"><primary sortas="AccessibleStreamableContentSeekType">AccessibleStreamableContentSeekType</primary></indexterm><programlisting>typedef enum
+{
+  SPI_STREAM_SEEK_SET,
+  SPI_STREAM_SEEK_CUR,
+  SPI_STREAM_SEEK_END
+} AccessibleStreamableContentSeekType;
+</programlisting>
+<para>
+The seek type for a specified offset in AccessibleStreamableContent_seek.</para>
+<para>
+</para><variablelist role="enum">
+<varlistentry id="SPI-STREAM-SEEK-SET--CAPS" role="constant">
+<term><literal>SPI_STREAM_SEEK_SET</literal></term>
+<listitem><simpara> seek from the 'top' of the streamable
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STREAM-SEEK-CUR--CAPS" role="constant">
+<term><literal>SPI_STREAM_SEEK_CUR</literal></term>
+<listitem><simpara> seek from the current position in the stream
+</simpara></listitem>
+</varlistentry>
+<varlistentry id="SPI-STREAM-SEEK-END--CAPS" role="constant">
+<term><literal>SPI_STREAM_SEEK_END</literal></term>
+<listitem><simpara> seek from the end of the stream (if known)
+</simpara></listitem>
+</varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStreamableContent-freeContentTypesList" role="function" condition="since:AT-SPI 1.4">
+<title>AccessibleStreamableContent_freeContentTypesList ()</title>
+<indexterm zone="AccessibleStreamableContent-freeContentTypesList" role="AT-SPI 1.4"><primary sortas="AccessibleStreamableContent_freeContentTypesList">AccessibleStreamableContent_freeContentTypesList</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleStreamableContent_freeContentTypesList
+                                                        (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj,
+                                                         <link linkend="char">char</link> **content_types);</programlisting>
+<para>
+Free the memory associated with a call to <link linkend="AccessibleStreamableContent-getContentTypes"><type>AccessibleStreamableContent_getContentTypes</type></link>, once 
+the result has been used.</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> the AccessibleStreamableContent implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>content_types</parameter>&#160;:</term>
+<listitem><simpara> a list of content types previously returned by 
+    <link linkend="AccessibleStreamableContent-getContentTypes"><type>AccessibleStreamableContent_getContentTypes</type></link>.
+</simpara></listitem></varlistentry>
+</variablelist><para role="since">Since AT-SPI 1.4</para></refsect2>
+<refsect2 id="AccessibleStreamableContent-ref" role="function">
+<title>AccessibleStreamableContent_ref ()</title>
+<indexterm zone="AccessibleStreamableContent-ref"><primary sortas="AccessibleStreamableContent_ref">AccessibleStreamableContent_ref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleStreamableContent_ref     (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj);</programlisting>
+<para>
+Increment the reference count for an <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> object.
+</para>
+<para>
+<parameter>Since</parameter>: AT-SPI 1.4</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> implementor on which to
+      operate.
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStreamableContent-unref" role="function">
+<title>AccessibleStreamableContent_unref ()</title>
+<indexterm zone="AccessibleStreamableContent-unref"><primary sortas="AccessibleStreamableContent_unref">AccessibleStreamableContent_unref</primary></indexterm><programlisting><link linkend="void">void</link>                AccessibleStreamableContent_unref   (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj);</programlisting>
+<para>
+Decrement the reference count for an <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> object.
+</para>
+<para>
+<parameter>Since</parameter>: AT-SPI 1.4</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> implementor
+      on which to operate. 
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStreamableContent-getContentTypes" role="function">
+<title>AccessibleStreamableContent_getContentTypes ()</title>
+<indexterm zone="AccessibleStreamableContent-getContentTypes"><primary sortas="AccessibleStreamableContent_getContentTypes">AccessibleStreamableContent_getContentTypes</primary></indexterm><programlisting><link linkend="char">char</link> **             AccessibleStreamableContent_getContentTypes
+                                                        (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj);</programlisting>
+<para>
+Get a list of strings containing the content mimetypes available from an
+      <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> implementor.
+</para>
+<para>
+<parameter>Since</parameter>: AT-SPI 1.4</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> an array of strings, terminated by a NULL string, specifying the
+      mimetypes for which the streamed content is available.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStreamableContent-open" role="function">
+<title>AccessibleStreamableContent_open ()</title>
+<indexterm zone="AccessibleStreamableContent-open"><primary sortas="AccessibleStreamableContent_open">AccessibleStreamableContent_open</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleStreamableContent_open    (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj,
+                                                         const <link linkend="char">char</link> *content_type);</programlisting>
+<para>
+Open a streaming connection to an AccessibleStreamableContent implementor,
+      of a particular content type.  Note that a client may only have one
+      open stream per streamable interface instance in the current 
+      implementation.
+</para>
+<para>
+<parameter>Since</parameter>: AT-SPI 1.4</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>content_type</parameter>&#160;:</term>
+<listitem><simpara> a string specifying the content type to retrieve (should match one
+of the return strings from #<link linkend="AccessibleStreamableContent-getContentTypes"><function>AccessibleStreamableContent_getContentTypes()</function></link>).
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, <link linkend="FALSE--CAPS"><type>FALSE</type></link> if unsuccessful.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStreamableContent-seek" role="function">
+<title>AccessibleStreamableContent_seek ()</title>
+<indexterm zone="AccessibleStreamableContent-seek"><primary sortas="AccessibleStreamableContent_seek">AccessibleStreamableContent_seek</primary></indexterm><programlisting><link linkend="long">long</link>                AccessibleStreamableContent_seek    (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj,
+                                                         long <link linkend="int">int</link> offset,
+                                                         <link linkend="AccessibleStreamableContentSeekType">AccessibleStreamableContentSeekType</link> seek_type);</programlisting>
+<para>
+Cause the current streamable content connection (obtained via
+    #<link linkend="AccessibleStreamableContent-open"><function>AccessibleStreamableContent_open()</function></link>) to seek to a particular offset in the
+    stream.
+</para>
+<para>
+<parameter>Since</parameter>: AT-SPI 1.4</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>offset</parameter>&#160;:</term>
+<listitem><simpara> a long int specifying the offset into the stream.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>seek_type</parameter>&#160;:</term>
+<listitem><simpara> an enum indicating the seek offset type, may be SEEK_SET,
+           SEEK_CUR, SEEK_END (as in the <link linkend="lseek"><function>lseek()</function></link> libc command).
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, <link linkend="FALSE--CAPS"><type>FALSE</type></link> if unsuccessful.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStreamableContent-read" role="function">
+<title>AccessibleStreamableContent_read ()</title>
+<indexterm zone="AccessibleStreamableContent-read"><primary sortas="AccessibleStreamableContent_read">AccessibleStreamableContent_read</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleStreamableContent_read    (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj,
+                                                         <link linkend="void">void</link> *buff,
+                                                         long <link linkend="int">int</link> nbytes,
+                                                         unsigned <link linkend="int">int</link> read_type);</programlisting>
+<para>
+Copy (read) bytes from the currently open streamable content connection
+    to a buffer.  This is a blocking API, in the sense that it does not 
+    return until the bytes have been read, or an error condition is 
+    detected.
+</para>
+<para>
+<parameter>Since</parameter>: AT-SPI 1.4</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>buff</parameter>&#160;:</term>
+<listitem><simpara> a pointer to a buffer into which the resulting bytes read from the stream
+       are to be written.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>nbytes</parameter>&#160;:</term>
+<listitem><simpara> a long integer indicating the number of bytes to read/write.
+</simpara></listitem></varlistentry>
+<varlistentry><term><parameter>read_type</parameter>&#160;:</term>
+<listitem><simpara> currently unused, specifies behavior of reads for streamed content
+       if blocking is not allowed, etc.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> an integer indicating the number of bytes read, or -1 on error.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+<refsect2 id="AccessibleStreamableContent-close" role="function">
+<title>AccessibleStreamableContent_close ()</title>
+<indexterm zone="AccessibleStreamableContent-close"><primary sortas="AccessibleStreamableContent_close">AccessibleStreamableContent_close</primary></indexterm><programlisting><link linkend="SPIBoolean">SPIBoolean</link>          AccessibleStreamableContent_close   (<link linkend="AccessibleStreamableContent">AccessibleStreamableContent</link> *obj);</programlisting>
+<para>
+Close the current streaming connection to an AccessibleStreamableContent implementor.
+This must be called before any subsequent AccessibleStreamableContent_open
+calls on the same object.
+</para>
+<para>
+<parameter>Since</parameter>: AT-SPI 1.4</para>
+<para>
+</para><variablelist role="params">
+<varlistentry><term><parameter>obj</parameter>&#160;:</term>
+<listitem><simpara> a pointer to the <link linkend="AccessibleStreamableContent"><type>AccessibleStreamableContent</type></link> implementor on which to operate.
+</simpara></listitem></varlistentry>
+<varlistentry><term><emphasis>Returns</emphasis>&#160;:</term><listitem><simpara> <link linkend="TRUE--CAPS"><type>TRUE</type></link> if successful, <link linkend="FALSE--CAPS"><type>FALSE</type></link> if unsuccessful.
+
+</simpara></listitem></varlistentry>
+</variablelist></refsect2>
+
+</refsect1>
+
+
+
+
+</refentry>
